@@ -1,0 +1,4609 @@
+:root {
+  --inchiostro: #272d21;
+  --avorio: #f4f1e7;
+  --salvia: #d9e2d2;
+  --salvia-tenue: #e5e9dd;
+  --bordo: #a2aa98;
+  --titoli: "Playfair Display", Georgia, serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--avorio);
+  color: var(--inchiostro);
+  font: 1rem/1.65 system-ui, sans-serif;
+}
+
+a {
+  color: inherit;
+}
+
+a:focus-visible,
+summary:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 5px;
+}
+
+/* Intestazione e navigazione */
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.15rem clamp(1.25rem, 5vw, 5rem);
+  background: var(--salvia);
+  border-bottom: 1px solid var(--bordo);
+}
+
+.brand {
+  font: italic 1.65rem/1.15 var(--titoli);
+  text-decoration: none;
+}
+
+.brand span,
+.label {
+  display: block;
+  font: 600 .875rem/1.4 system-ui, sans-serif;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.brand span {
+  margin-top: .4rem;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem clamp(1rem, 3vw, 2.5rem);
+}
+
+nav a {
+  text-decoration: none;
+}
+
+nav a:hover,
+.brand:hover {
+  text-decoration: underline;
+  text-underline-offset: .25em;
+}
+
+/* Apertura della pagina */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: clamp(32rem, 52vw, 46rem);
+  padding: clamp(2rem, 7vw, 7rem);
+}
+
+.label {
+  margin: 0 0 1.4rem;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: var(--titoli);
+  font-style: italic;
+  font-weight: 400;
+}
+
+h1 {
+ font-size: clamp(2.5rem, 5.5vw, 5.5rem);
+  line-height: .95;
+  letter-spacing: -.055em;
+}
+
+h1 span {
+  color: #526044;
+}
+
+.lead {
+  margin: 1.8rem 0 1.5rem;
+  font: clamp(1.2rem, 2vw, 1.6rem)/1.45 Georgia, serif;
+}
+
+.button {
+  display: inline-block;
+  padding: .8rem 1.5rem;
+  border: 1px solid #475640;
+  border-radius: 1.9rem .35rem 1.9rem .35rem;
+  background: #475640;
+  color: var(--avorio);
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  transition:
+    background-color .2s ease,
+    border-color .2s ease,
+    box-shadow .2s ease,
+    transform .2s ease;
+}
+
+.button:focus-visible {
+  outline: 2px solid #475640;
+  outline-offset: 4px;
+}
+
+@media (hover: hover) {
+  .button:hover {
+    background: #52634a;
+    border-color: #52634a;
+    box-shadow: 0 5px 12px rgb(39 45 33 / 18%);
+    transform: translateY(-2px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+  }
+
+  .button:hover {
+    transform: none;
+  }
+}
+
+.hero-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  background: #34372d;
+  object-fit: cover;
+  object-position: center 57%;
+}
+
+/* Atelier, composizioni e laboratori */
+.story,
+.works {
+  padding: clamp(3.5rem, 8vw, 8rem) clamp(1.25rem, 8vw, 8rem);
+}
+
+.story {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 1.2rem;
+}
+
+h2 {
+  font-size: clamp(2.5rem, 5.5vw, 5rem);
+  line-height: 1.05;
+  letter-spacing: -.04em;
+}
+
+.story p:not(.label) {
+  max-width: 58ch;
+}
+
+.works {
+  background: var(--salvia-tenue);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1rem, 4vw, 4rem);
+  margin-top: 2.25rem;
+}
+
+.cards article,
+details {
+  padding: 1rem 0;
+  border-top: 1px solid var(--bordo);
+}
+
+h3 {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  line-height: 1.15;
+}
+
+details:last-child {
+  border-bottom: 1px solid var(--bordo);
+}
+
+summary {
+  cursor: pointer;
+  font: italic 1.3rem/1.4 var(--titoli);
+}
+
+/* Footer con bordo superiore curvo */
+footer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  padding: 1.75rem clamp(1.25rem, 5vw, 5rem);
+  background: var(--salvia);
+}
+
+footer::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: calc(100% - 1px);
+  left: 0;
+  height: clamp(1.25rem, 4vw, 3rem);
+  background: var(--salvia);
+  clip-path: ellipse(72% 100% at 42% 100%);
+  pointer-events: none;
+}
+
+footer p {
+  margin: 0;
+  font-size: .875rem;
+}
+
+/* Impaginazione per schermi piccoli */
+@media (max-width: 700px) {
+  .top {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .hero,
+  .story,
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .intro {
+    min-height: auto;
+    padding: 3.5rem 1.25rem;
+  }
+
+  .hero-image {
+    height: clamp(17rem, 85vw, 34rem);
+  }
+
+  .story .label {
+    margin: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Curva asimmetrica del footer */
+:root {
+  --altezza-curva: clamp(.65rem, 1.8vw, 1.75rem);
+}
+
+footer::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: var(--altezza-curva);
+  background: var(--salvia);
+  pointer-events: none;
+}
+
+footer {
+ margin-top: calc(var(--altezza-curva) + clamp(2rem, 5vw, 4rem));
+}
+
+footer::before {
+  bottom: calc(100% - 1px);
+  clip-path: none;
+  border-radius: 66% 34% 0 0 / 100% 100% 0 0;
+}
+
+/* Rametto illustrato accanto al titolo */
+.intro {
+  position: relative;
+  padding-top: max(6rem, 7vw);
+}
+
+.rametto {
+  position: absolute;
+  top: .75rem;
+  right: 1.25rem;
+  width: 5.5rem;
+  height: 5rem;
+  color: #526044;
+  pointer-events: none;
+  transform-origin: 50% 95%;
+  animation: rametto-oscilla 4s ease-in-out 1;
+}
+
+.rametto-stelo {
+  position: absolute;
+  bottom: .2rem;
+  left: 2.5rem;
+  width: 1rem;
+  height: 4rem;
+  border-left: 3px solid currentColor;
+  border-radius: 65% 0 0 30%;
+  transform: rotate(12deg);
+}
+
+.foglia {
+  position: absolute;
+  width: 2rem;
+  height: 1.15rem;
+  background: #aec09b;
+  border: 2px solid currentColor;
+  border-radius: 80% 10% 80% 10%;
+}
+
+.foglia-sinistra {
+  top: 2.2rem;
+  left: .65rem;
+  transform: rotate(58deg);
+}
+
+.foglia-destra {
+  top: 1.45rem;
+  left: 2.6rem;
+  background: #d1d9b4;
+  transform: rotate(-15deg);
+}
+
+.foglia-alta {
+  top: .35rem;
+  left: 2.15rem;
+  transform: rotate(-63deg);
+}
+
+@keyframes rametto-oscilla {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(9deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rametto {
+    animation: none;
+  }
+}
+
+/* Fiorellino sulla punta del rametto */
+.rametto-fiore {
+  position: absolute;
+  top: .35rem;
+  left: 3.05rem;
+  width: .48rem;
+  height: .48rem;
+  border-radius: 50%;
+  background: #bd862e;
+  box-shadow:
+    0 -.42rem 0 .06rem #fff7dc,
+    .4rem -.13rem 0 .06rem #fff7dc,
+    .25rem .34rem 0 .06rem #fff7dc,
+    -.25rem .34rem 0 .06rem #fff7dc,
+    -.4rem -.13rem 0 .06rem #fff7dc;
+  filter: drop-shadow(0 0 1px #736747);
+}
+/* Fotografia ad arco nella sezione di apertura */
+.foto-atelier {
+  position: relative;
+  align-self: center;
+  width: calc(100% - 2.5rem);
+  max-width: 32rem;
+  aspect-ratio: 4 / 5;
+  margin: 2rem auto;
+  overflow: hidden;
+  border-radius: 50% 50% 0 0 / 36% 36% 0 0;
+}
+
+.foto-atelier .hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 55%;
+}
+
+.foto-atelier figcaption {
+  position: absolute;
+  inset: auto 0 0;
+  padding: 2.5rem 1rem 1.5rem;
+  background: linear-gradient(transparent, rgb(20 25 17 / 90%));
+  color: var(--avorio);
+  text-align: center;
+  font: italic clamp(1.35rem, 3vw, 2.15rem)/1.2 var(--titoli);
+}
+
+.ornamento-foto {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .65rem;
+  margin-bottom: .5rem;
+  color: var(--salvia);
+  font: .65rem/1 system-ui, sans-serif;
+}
+
+.ornamento-foto::before,
+.ornamento-foto::after {
+  content: "";
+  width: 2rem;
+  height: 1px;
+  background: currentColor;
+}
+
+@media (max-width: 700px) {
+  .foto-atelier {
+    margin: 0 auto 2.5rem;
+  }
+}/* Sezione L’atelier */
+#atelier {
+  background: #edf0e6;
+}
+
+#atelier > .label::after {
+  content: "";
+  display: block;
+  width: 2.75rem;
+  height: 1px;
+  margin-top: .75rem;
+  background: #77856b;
+}
+
+#atelier p:not(.label) {
+  max-width: 46ch;
+  font-family: Georgia, serif;
+  font-size: 1.15rem;
+  line-height: 1.7;
+}
+.social-footer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+/* Menu responsive di Foglie a mezzavoce */
+.menu-toggle[hidden],
+#menu-principale[hidden] {
+  display: none;
+}
+
+.menu-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  min-height: 44px;
+  padding: .5rem .75rem;
+  border: 1px solid var(--inchiostro);
+  border-radius: .4rem;
+  background: transparent;
+  color: var(--inchiostro);
+  font: inherit;
+  cursor: pointer;
+}
+
+.menu-toggle:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
+.top > .brand img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 860px) {
+  .top {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .75rem;
+    padding: .75rem 1.25rem;
+  }
+
+  .top > .brand img {
+    width: clamp(110px, 28vw, 150px);
+  }
+
+  #menu-principale {
+    flex: 0 0 100%;
+    flex-direction: column;
+    gap: 0;
+    border-top: 1px solid var(--bordo);
+  }
+
+  #menu-principale a {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  .hero,
+  .story,
+  .cards {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .intro {
+    min-height: auto;
+    padding: 2.5rem 1.25rem 1.75rem;
+  }
+
+  #titolo {
+    font-size: clamp(2.35rem, 8vw, 4rem);
+    overflow-wrap: anywhere;
+  }
+
+  .foto-atelier {
+    margin: 0 auto 2.5rem;
+  }
+
+  .story,
+  .works {
+    padding: 3rem 1.25rem;
+  }
+
+  .story .label {
+    margin-bottom: 0;
+  }
+
+  footer {
+    flex-direction: column;
+    gap: .75rem;
+    text-align: center;
+  }
+
+  .social-footer a {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+  }
+}
+.menu-toggle {
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border-color: #475640;
+border-radius: 6px;
+  background: var(--avorio);
+  color: #475640;
+  transition: background-color .2s ease, color .2s ease;
+}
+
+.menu-icon {
+  position: relative;
+  display: block;
+  width: 22px;
+  height: 18px;
+}
+
+.menu-icon span {
+  position: absolute;
+  top: 8px;
+  right: 0;
+  width: 22px;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  transition: transform .2s ease, opacity .2s ease, width .2s ease;
+}
+
+.menu-icon span:first-child {
+  
+  transform: translateY(-6px);
+}
+
+.menu-icon span:last-child {
+  
+  transform: translateY(6px);
+}
+
+.menu-toggle[aria-expanded="true"] {
+  background: #475640;
+  color: var(--avorio);
+}
+
+.menu-toggle[aria-expanded="true"] .menu-icon span:first-child {
+  width: 22px;
+  transform: rotate(45deg);
+}
+
+.menu-toggle[aria-expanded="true"] .menu-icon span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle[aria-expanded="true"] .menu-icon span:last-child {
+  width: 22px;
+  transform: rotate(-45deg);
+}
+
+@media (hover: hover) {
+  .menu-toggle:hover {
+    background: #475640;
+    color: var(--avorio);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu-toggle,
+  .menu-icon span {
+    transition: none;
+  }
+}
+/* Bordo decorativo sotto l’header */
+/* Linea sfumata sotto l’header */
+.top {
+  position: relative;
+  border: 0;
+}
+
+.top::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    #77856b 25%,
+    #475640 50%,
+    #77856b 75%,
+    transparent
+  );
+  pointer-events: none;
+}
+/* Galleria delle composizioni */
+/* Galleria delle composizioni */
+#composizioni {
+  background: #e5e9dd;
+}
+
+#composizioni > .label,
+#composizioni > h2 {
+  text-align: center;
+}
+
+#composizioni > .label {
+  margin-bottom: .75rem;
+}
+
+.galleria-composizioni {
+  grid-template-columns: minmax(0, 1.2fr) repeat(2, minmax(0, 1fr));
+  gap: clamp(.85rem, 2vw, 1.75rem);
+  align-items: stretch;
+  max-width: 76rem;
+  margin: clamp(1.75rem, 4vw, 3rem) auto 0;
+}
+
+.galleria-composizioni article {
+  min-width: 0;
+  padding: clamp(.7rem, 1.5vw, 1.15rem);
+  background: var(--avorio);
+  border: 1px solid #b8c1ad;
+  border-radius: 3px;
+}
+
+.galleria-composizioni img {
+  display: block;
+  width: 100%;
+  height: clamp(13rem, 27vw, 25rem);
+  object-fit: cover;
+}
+
+.galleria-composizioni h3 {
+  margin-top: .9rem;
+  padding-top: .85rem;
+  border-top: 1px solid #a7b398;
+  font-size: clamp(1.45rem, 2.4vw, 2.2rem);
+}
+
+.galleria-composizioni p {
+  max-width: 36ch;
+  margin: .5rem 0 .25rem;
+}
+
+@media (max-width: 860px) {
+  .galleria-composizioni {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .galleria-composizioni {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.25rem;
+    max-width: 28rem;
+  }
+
+  .galleria-composizioni img {
+    height: auto;
+    aspect-ratio: 4 / 5;
+  }
+}
+/* Movimento delle schede della galleria */
+@media (hover: hover) and (pointer: fine) {
+  .galleria-composizioni article {
+    transition: box-shadow .25s ease, border-color .25s ease;
+  }
+
+  .galleria-composizioni img {
+    transition: filter .25s ease;
+  }
+
+  .galleria-composizioni article:hover {
+    border-color: #859477;
+    box-shadow: 0 8px 20px rgb(39 45 33 / 12%);
+  }
+
+  .galleria-composizioni article:hover img {
+    filter: brightness(1.06);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .galleria-composizioni article {
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  }
+
+  .galleria-composizioni article:hover {
+    transform: translateY(-4px);
+  }
+}
+/* Sfondo in movimento nella sezione L’atelier */
+#atelier {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: #edf0e6;
+}
+
+#atelier::before {
+  content: "";
+  position: absolute;
+  inset: -6rem 0;
+  z-index: -1;
+  background:
+    linear-gradient(90deg, #edf0e6 0%, transparent 100%),
+    url("../atelier.png") center 55% / cover no-repeat;
+  opacity: .18;
+  pointer-events: none;
+}
+
+@keyframes sfondo-atelier {
+  from { transform: translateY(5rem); }
+  to   { transform: translateY(-5rem); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    #atelier::before {
+      animation: sfondo-atelier linear both;
+      animation-timeline: view();
+      animation-range: entry 0% exit 100%;
+    }
+  }
+}
+/* Schede dei laboratori */
+/* Laboratori con foto e pannello verde bosco */
+.laboratori-editoriale {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  background: #28392e;
+  color: var(--avorio);
+}
+
+.laboratori-foto {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  object-fit: cover;
+  object-position: center;
+}
+
+.laboratori-testo {
+  align-self: center;
+  min-width: 0;
+  padding: clamp(2rem, 6vw, 6rem);
+}
+
+.laboratori-testo .label {
+  color: #c4d3b8;
+}
+
+.laboratori-testo h2 {
+  font-size: clamp(2.7rem, 5.5vw, 5.25rem);
+}
+
+.laboratori-testo > p:not(.label) {
+  max-width: 42ch;
+  margin: 1.25rem 0 1.75rem;
+}
+
+#laboratori details {
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid #819280;
+}
+
+#laboratori details:last-child {
+  border-bottom: 1px solid #819280;
+}
+
+#laboratori details[open] {
+  background: rgb(244 241 231 / 8%);
+}
+
+#laboratori summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  min-height: 48px;
+  padding: .9rem .75rem;
+  list-style: none;
+}
+
+#laboratori summary::-webkit-details-marker {
+  display: none;
+}
+
+#laboratori summary::after {
+  content: "";
+  flex: 0 0 1rem;
+  width: 1rem;
+  height: 1rem;
+  color: #c4d3b8;
+  background:
+    linear-gradient(currentColor, currentColor) center / 12px 1px no-repeat,
+    linear-gradient(currentColor, currentColor) center / 1px 12px no-repeat;
+}
+
+#laboratori details[open] summary::after {
+  background-size: 12px 1px, 0 0;
+}
+
+#laboratori details p {
+  margin: 0;
+  padding: 0 .75rem 1rem;
+}
+
+@media (hover: hover) {
+  #laboratori summary:hover {
+    background: rgb(244 241 231 / 10%);
+  }
+}
+
+@media (max-width: 860px) {
+  .laboratori-editoriale {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .laboratori-foto {
+    height: clamp(17rem, 65vw, 29rem);
+    object-position: center 46%;
+  }
+
+  .laboratori-testo {
+    padding: 2.25rem 1.25rem 3rem;
+  }
+}
+/* Chiusura della home */
+footer {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    "nome fregio"
+    "crediti torna";
+  align-items: center;
+  gap: 1rem 1.5rem;
+  text-align: left;
+}
+
+footer > .brand {
+  grid-area: nome;
+  justify-self: start;
+  font-size: clamp(1.65rem, 3vw, 2.3rem);
+}
+
+footer > .social-footer {
+  grid-area: social;
+}
+
+footer > p {
+  grid-area: crediti;
+  align-self: stretch;
+  padding-top: .85rem;
+  border-top: 1px solid var(--bordo);
+}
+
+.torna-in-alto {
+  grid-area: torna;
+  padding-top: .85rem;
+  border-top: 1px solid var(--bordo);
+  text-align: right;
+  text-underline-offset: .25em;
+}
+
+@media (max-width: 600px) {
+  footer {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "nome"
+      "fregio"
+      "crediti"
+      "torna";
+    text-align: center;
+  }
+
+  footer > .brand,
+  footer > .social-footer {
+    justify-self: center;
+  }
+
+  .torna-in-alto {
+    justify-self: center;
+    padding-top: 0;
+    border-top: 0;
+    text-align: center;
+  }
+}
+/* Rifinitura dell’apertura */
+.hero {
+  background: radial-gradient(
+    ellipse at 80% 42%,
+    #e1e7d8 0%,
+    var(--avorio) 65%
+  );
+}
+
+.hero .intro {
+  min-width: 0;
+  min-height: auto;
+  padding: clamp(3rem, 6vw, 6rem) clamp(1.75rem, 5vw, 5rem);
+}
+
+.hero #titolo {
+  font-size: clamp(2.35rem, 5.3vw, 5.5rem);
+  line-height: 1.02;
+  overflow-wrap: anywhere;
+}
+
+.hero .foto-atelier {
+  max-width: 30rem;
+  box-shadow:
+    0 0 0 1px rgb(82 96 68 / 22%),
+    0 18px 45px rgb(39 45 33 / 15%);
+}
+
+@media (max-width: 860px) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr);
+    background: radial-gradient(
+      ellipse at 50% 70%,
+      #e1e7d8 0%,
+      var(--avorio) 72%
+    );
+  }
+
+  .hero .intro {
+    align-items: center;
+    padding: 2.75rem 1.25rem 2rem;
+    text-align: center;
+  }
+
+  .hero #titolo {
+    font-size: clamp(1.95rem, 9vw, 4rem);
+  }
+
+  .hero .intro-racconto {
+    text-align: left;
+  }
+
+  .hero .foto-atelier {
+    width: min(calc(100% - 2.5rem), 26rem);
+    margin: 0 auto 2.75rem;
+  }
+}
+
+/* Entrata della foto e del testo */
+@keyframes entrata-home {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes luce-laboratori {
+  from { filter: brightness(.72); }
+  to   { filter: brightness(1); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero .intro {
+    animation: entrata-home .55s ease-out both;
+  }
+
+  .hero .foto-atelier {
+    animation: entrata-home .7s .12s ease-out both;
+  }
+
+  .hero .foto-atelier figcaption {
+    animation: entrata-home .45s .35s ease-out both;
+  }
+
+  @supports (animation-timeline: view()) {
+    .laboratori-foto {
+      animation: luce-laboratori linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 85%;
+    }
+  }
+}
+/* Sfumatura del footer e risalto delle icone social */
+footer {
+  background-image: linear-gradient(
+    to bottom,
+    var(--salvia) 15%,
+    #cbd7c3 100%
+  );
+}
+
+.social-footer a {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+}
+
+.social-footer a:focus-visible {
+  background: var(--avorio);
+}
+
+@media (hover: hover) {
+  .social-footer a:hover {
+    background: var(--avorio);
+    box-shadow: 0 3px 10px rgb(39 45 33 / 14%);
+  }
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .social-footer a {
+    transition: transform .2s ease, background-color .2s ease, box-shadow .2s ease;
+  }
+
+  .social-footer a:hover {
+    transform: translateY(-3px);
+  }
+}
+/* Margini e spazi condivisi dalla home */
+:root {
+  --margine-home: clamp(1.5rem, 7vw, 7rem);
+  --spazio-sezione: clamp(3rem, 7vw, 7rem);
+  --filetto-home: #859477;
+}
+
+/* Allinea apertura, sezioni e pannello dei laboratori */
+.hero .intro,
+#atelier,
+#composizioni,
+.laboratori-testo {
+  padding-inline: var(--margine-home);
+}
+
+.hero .intro,
+#atelier,
+#composizioni,
+.laboratori-testo {
+  padding-block: var(--spazio-sezione);
+}
+
+/* Etichette con un filetto sottile */
+.hero .label,
+#atelier > .label,
+#composizioni > .label,
+.laboratori-testo > .label {
+  display: flex;
+  align-items: center;
+  gap: .65rem;
+  margin: 0 0 .85rem;
+}
+
+.hero .label::before,
+#atelier > .label::before,
+#composizioni > .label::before,
+#composizioni > .label::after,
+.laboratori-testo > .label::before {
+  content: "";
+  flex: 0 0 1.5rem;
+  height: 1px;
+  background: var(--filetto-home);
+}
+
+/* Rimuove il vecchio filetto sotto l’etichetta dell’atelier */
+#atelier > .label::after {
+  content: none;
+}
+
+#atelier {
+  align-items: start;
+  gap: clamp(1rem, 4vw, 4rem);
+}
+
+#atelier > .label {
+  margin-top: .4rem;
+}
+
+#composizioni > .label {
+  justify-content: center;
+}
+
+.laboratori-testo > .label::before {
+  background: #c4d3b8;
+}
+
+/* Spazi più compatti su telefono e tablet */
+@media (max-width: 860px) {
+  :root {
+    --margine-home: clamp(1.25rem, 4vw, 2rem);
+    --spazio-sezione: clamp(2.5rem, 7vw, 4rem);
+  }
+
+  .hero .intro {
+    padding-bottom: 1.5rem;
+  }
+
+  #atelier > .label {
+    margin: 0;
+  }
+
+  .laboratori-testo {
+    padding-top: 2rem;
+  }
+}
+/* Sagoma decorativa dietro la foto ad arco */
+.cornice-atelier {
+  --scarto-cornice: clamp(.65rem, 1.8vw, 1.35rem);
+  position: relative;
+  isolation: isolate;
+  align-self: center;
+  justify-self: center;
+  width: calc(100% - 3rem);
+  max-width: 31.5rem;
+  margin: 2.5rem 0;
+  padding-right: var(--scarto-cornice);
+  padding-bottom: var(--scarto-cornice);
+}
+
+.cornice-atelier::before {
+  content: "";
+  position: absolute;
+  inset: var(--scarto-cornice) 0 0 var(--scarto-cornice);
+  z-index: -1;
+  border: 1px solid #859477;
+  border-radius: 50% 50% 0 0 / 36% 36% 0 0;
+  background: #d9e2d2;
+  pointer-events: none;
+}
+
+.hero .cornice-atelier .foto-atelier {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+}
+
+@media (max-width: 860px) {
+  .cornice-atelier {
+    --scarto-cornice: .65rem;
+    width: calc(100% - 2.5rem);
+    max-width: 26rem;
+    margin: 0 0 2.75rem;
+  }
+}
+/* Pagina Composizioni */
+.pagina-composizioni .apertura-composizioni {
+  padding: clamp(3rem, 8vw, 7rem) 1.25rem;
+  background: radial-gradient(ellipse at 50% 0%, #dde6d6, var(--avorio) 72%);
+  text-align: center;
+}
+
+.pagina-composizioni h1 {
+  font-size: clamp(2.65rem, 7vw, 6rem);
+}
+
+.apertura-composizioni > p:not(.label) {
+  max-width: 48ch;
+  margin: 1.25rem auto 0;
+}
+
+.raccolta-studi {
+  width: min(calc(100% - 2.5rem), 70rem);
+  margin-inline: auto;
+}
+
+.studio-botanico {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-areas: "foto testo";
+  align-items: center;
+  gap: clamp(1.5rem, 6vw, 6rem);
+  padding-block: clamp(1.75rem, 5vw, 4rem);
+  border-top: 1px solid var(--bordo);
+}
+
+.studio-inverso {
+  grid-template-areas: "testo foto";
+}
+
+.studio-botanico img {
+  grid-area: foto;
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 4px;
+  box-shadow: .55rem .55rem 0 var(--salvia);
+}
+
+.studio-testo {
+  grid-area: testo;
+}
+
+.studio-testo h2 {
+  font-size: clamp(2.2rem, 4.6vw, 4.25rem);
+}
+
+.studio-testo p {
+  max-width: 40ch;
+}
+
+.studio-materiali {
+  padding-top: .85rem;
+  border-top: 1px solid var(--bordo);
+  color: #475640;
+  font-size: .95rem;
+}
+
+.rientro-composizioni {
+  padding: 1rem 1.25rem 2rem;
+  text-align: center;
+}
+
+.pagina-composizioni nav a[aria-current="page"] {
+  text-decoration: underline;
+  text-underline-offset: .3em;
+}
+
+@media (max-width: 700px) {
+  .studio-botanico,
+  .studio-inverso {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "foto"
+      "testo";
+  }
+}
+/* Pulsante sotto la galleria della home */
+#composizioni > .rientro-composizioni {
+  margin-top: clamp(1.5rem, 4vw, 3rem);
+  padding: 0;
+}
+
+#composizioni > .rientro-composizioni .button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding-inline: 1.5rem;
+}
+
+@media (max-width: 700px) {
+  #composizioni > .rientro-composizioni .button {
+    width: min(100%, 22rem);
+  }
+}
+/* Indice della pagina Composizioni */
+.indice-studi {
+  justify-content: center;
+  gap: .5rem 1rem;
+  width: min(calc(100% - 2.5rem), 70rem);
+  margin: 0 auto 1.5rem;
+}
+
+.indice-studi a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: .45rem 1rem;
+  border: 1px solid var(--bordo);
+  border-radius: 99px;
+  background: var(--avorio);
+}
+
+.indice-studi a:hover,
+.indice-studi a:focus-visible {
+  background: var(--salvia);
+}
+
+.studio-testo h2[id] {
+  scroll-margin-top: 1.5rem;
+}
+/* Quaderno dell’atelier */
+.quaderno-atelier {
+  width: min(calc(100% - 2.5rem), 56rem);
+  margin: 0 auto 2rem;
+}
+
+.gesto-atelier {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  align-items: start;
+  gap: 1rem clamp(1.5rem, 5vw, 4rem);
+  padding: clamp(1.5rem, 4vw, 3rem);
+  border-top: 1px solid var(--bordo);
+}
+
+.gesto-atelier:nth-child(even) {
+  background: #e9eee3;
+}
+
+.gesto-atelier h2 {
+  font-size: clamp(1.85rem, 3.5vw, 3rem);
+}
+
+.gesto-atelier p {
+  max-width: 48ch;
+  margin: 0;
+}
+
+@media (max-width: 700px) {
+  .gesto-atelier {
+    grid-template-columns: 1fr;
+  }
+}
+/* Apertura della pagina Dietro le composizioni */
+.apertura-quaderno {
+  display: grid;
+  grid-template-areas: "copertina";
+  margin-bottom: clamp(2rem, 5vw, 4.5rem);
+  background: #28392e;
+  color: var(--avorio);
+}
+
+.apertura-quaderno img,
+.apertura-quaderno-testo {
+  grid-area: copertina;
+}
+
+.apertura-quaderno img {
+  display: block;
+  width: 100%;
+  height: clamp(25rem, 45vw, 38rem);
+  object-fit: cover;
+  object-position: center 58%;
+}
+
+.apertura-quaderno-testo {
+  align-self: end;
+  padding: 4.5rem clamp(1.5rem, 7vw, 7rem) 2.5rem;
+  background: linear-gradient(transparent, rgb(19 25 17 / 92%));
+}
+
+.pagina-composizioni .apertura-quaderno h1 {
+  font-size: clamp(2.6rem, 6vw, 5.5rem);
+  line-height: 1.05;
+}
+
+.apertura-quaderno-testo p {
+  margin: .75rem 0 0;
+}
+
+@media (max-width: 700px) {
+  .apertura-quaderno {
+    grid-template-areas: "foto" "testo";
+  }
+
+  .apertura-quaderno img {
+    grid-area: foto;
+    height: clamp(13rem, 62vw, 22rem);
+  }
+
+  .apertura-quaderno-testo {
+    grid-area: testo;
+    padding: 1.5rem 1.25rem 2rem;
+    background: #28392e;
+  }
+}
+/* Esercizio nella pagina Dietro le composizioni */
+.prova-atelier {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(1.5rem, 5vw, 4rem);
+  width: min(calc(100% - 2.5rem), 56rem);
+  margin: 0 auto clamp(1.5rem, 4vw, 3rem);
+  padding: clamp(1.5rem, 5vw, 4rem);
+  border-radius: 2rem .35rem 2rem .35rem;
+  background: #28392e;
+  color: var(--avorio);
+}
+
+.prova-atelier .label {
+  margin-bottom: .65rem;
+  color: #c4d3b8;
+}
+
+.prova-atelier h2 {
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+}
+
+.prova-atelier p:last-child {
+  margin-bottom: 0;
+}
+
+.prova-atelier ol {
+  margin: 0;
+  padding: 0 0 0 2rem;
+  background: transparent;
+  color: var(--avorio);
+}
+
+.prova-atelier li {
+  padding: .8rem 0 .8rem .5rem;
+  line-height: 1.55;
+}
+
+.prova-atelier li + li {
+  border-top: 1px solid rgb(196 211 184 / 35%);
+}
+
+.prova-atelier li::marker {
+  color: #c4d3b8;
+  font-family: var(--titoli);
+  font-size: 1.5em;
+  font-style: italic;
+}
+
+@media (max-width: 700px) {
+  .prova-atelier {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+/* Copertina della pagina Dietro le composizioni */
+.apertura-quaderno {
+  --angolo-copertina: clamp(3rem, 10vw, 9rem);
+  --scarto-copertina: clamp(.65rem, 2vw, 1.5rem);
+  position: relative;
+  isolation: isolate;
+  width: min(calc(100% - 4rem), 74rem);
+  margin: clamp(2rem, 5vw, 4rem) auto clamp(5rem, 9vw, 8rem);
+  background: transparent;
+}
+
+.apertura-quaderno::before {
+  content: "";
+  grid-area: copertina;
+  border: 1px solid #859477;
+  border-radius: 0 var(--angolo-copertina) 0 0;
+  background: var(--salvia);
+  transform: translate(var(--scarto-copertina), var(--scarto-copertina));
+  pointer-events: none;
+}
+
+.apertura-quaderno img {
+  position: relative;
+  border-radius: 0 var(--angolo-copertina) 0 0;
+  object-position: center 55%;
+}
+
+.apertura-quaderno-testo {
+  position: relative;
+  z-index: 1;
+  justify-self: start;
+  width: min(82%, 37rem);
+  margin-left: clamp(.75rem, 4vw, 3rem);
+  padding: clamp(1.5rem, 4vw, 3rem);
+  border-top: 2px solid #a7b398;
+  background: #28392e;
+  box-shadow: 0 14px 32px rgb(39 45 33 / 18%);
+  transform: translateY(2rem);
+}
+
+.pagina-composizioni .apertura-quaderno h1 {
+  font-size: clamp(2.4rem, 5.2vw, 4.75rem);
+  line-height: 1.02;
+}
+
+@media (max-width: 700px) {
+  .apertura-quaderno {
+    --angolo-copertina: 3.5rem;
+    --scarto-copertina: .55rem;
+    width: calc(100% - 2.5rem);
+    margin: 1.5rem auto 2.75rem;
+  }
+
+  .apertura-quaderno::before {
+    grid-area: foto;
+  }
+
+  .apertura-quaderno-testo {
+    justify-self: stretch;
+    width: auto;
+    margin: -1.25rem .75rem 0;
+    padding: 1.25rem 1rem 1.5rem;
+    transform: none;
+  }
+
+  .pagina-composizioni .apertura-quaderno h1 {
+    font-size: clamp(1.9rem, 7vw, 3rem);
+  }
+}
+/* Filo grafico dei tre gesti dell’atelier */
+.quaderno-atelier {
+  --filo-atelier: #859477;
+  padding-left: clamp(1rem, 3vw, 2.25rem);
+}
+
+.quaderno-atelier .gesto-atelier {
+  position: relative;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  border-top: 0;
+  border-left: 1px solid var(--filo-atelier);
+}
+
+.quaderno-atelier .gesto-atelier + .gesto-atelier {
+  border-top: 1px solid #b8c1ad;
+}
+
+.quaderno-atelier .gesto-atelier::before {
+  content: "";
+  position: absolute;
+  top: calc(clamp(1.5rem, 4vw, 3rem) + .65rem);
+  left: 0;
+  width: .7rem;
+  height: .7rem;
+  border: 1px solid #526044;
+  border-radius: 50%;
+  background: var(--salvia);
+  box-shadow: 0 0 0 4px var(--avorio);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+@media (max-width: 700px) {
+  .quaderno-atelier {
+    padding-left: .5rem;
+  }
+
+  .quaderno-atelier .gesto-atelier {
+    padding-inline: 1.25rem .75rem;
+    gap: .65rem;
+  }
+}
+/* Nota di bottega nella pagina Composizioni */
+.nota-bottega {
+  width: min(calc(100% - 3rem), 40rem);
+  margin: clamp(2rem, 5vw, 4rem) auto;
+  padding: clamp(1.25rem, 4vw, 2.5rem);
+  border: 1px solid #859477;
+  border-radius: .25rem 2rem .25rem .25rem;
+  background: #e9eee3;
+  box-shadow: .4rem .4rem 0 var(--salvia);
+}
+
+.nota-bottega .label {
+  margin-bottom: .65rem;
+}
+
+.nota-bottega h2 {
+  font-size: clamp(1.9rem, 4vw, 3rem);
+}
+
+.nota-bottega p:last-child {
+  max-width: 48ch;
+  margin: .9rem 0 0;
+}
+/* Collegamenti a fine quaderno */
+.chiusura-quaderno {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: .75rem 1.5rem;
+  width: min(calc(100% - 2.5rem), 56rem);
+  margin: clamp(2rem, 5vw, 3.5rem) auto 0;
+  padding: 1.5rem 0 .5rem;
+  border-top: 1px solid var(--bordo);
+}
+
+.chiusura-quaderno-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: #475640;
+  text-underline-offset: .25em;
+}
+
+@media (max-width: 600px) {
+  .chiusura-quaderno {
+    flex-direction: column;
+  }
+}
+/* Evidenzia i tre passaggi del quaderno durante lo scroll */
+@keyframes punto-quaderno {
+  from {
+    background-color: var(--salvia);
+    box-shadow: 0 0 0 4px var(--avorio);
+  }
+
+  to {
+    background-color: #526044;
+    box-shadow: 0 0 0 5px #d9e2d2;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .quaderno-atelier .gesto-atelier {
+      view-timeline-name: --passaggio-quaderno;
+    }
+
+    .quaderno-atelier .gesto-atelier::before {
+      animation: punto-quaderno linear both;
+      animation-timeline: --passaggio-quaderno;
+      animation-range: entry 10% entry 75%;
+    }
+  }
+}
+/* Riflesso diagonale sulla foto di copertina */
+.apertura-quaderno > img {
+  z-index: 1;
+}
+
+.apertura-quaderno-testo {
+  z-index: 3;
+}
+
+.apertura-quaderno::after {
+  content: "";
+  position: relative;
+  grid-area: copertina;
+  z-index: 2;
+  border-radius: 0 var(--angolo-copertina, 4rem) 0 0;
+  background: linear-gradient(
+    115deg,
+    transparent 42%,
+    rgb(244 241 231 / 34%) 50%,
+    transparent 58%
+  );
+  background-size: 240% 100%;
+  background-repeat: no-repeat;
+  opacity: 0;
+  pointer-events: none;
+}
+
+@keyframes riflesso-copertina {
+  0% {
+    background-position: 100% 0;
+    opacity: 0;
+  }
+
+  25%, 75% {
+    opacity: 1;
+  }
+
+  100% {
+    background-position: 0 0;
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .apertura-quaderno::after {
+    animation: riflesso-copertina 2s .35s ease-in-out both;
+  }
+}
+
+/* Trama leggera sul cartoncino della nota */
+.nota-bottega {
+  background-image:
+    linear-gradient(to right, #e9eee3 62%, transparent),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 11px,
+      rgb(82 96 68 / 12%) 11px 12px
+    );
+}
+
+@media (max-width: 700px) {
+  .apertura-quaderno::after {
+    grid-area: foto;
+  }
+
+  .nota-bottega {
+    background-image:
+      linear-gradient(to right, #e9eee3 76%, transparent),
+      repeating-linear-gradient(
+        0deg,
+        transparent 0 11px,
+        rgb(82 96 68 / 12%) 11px 12px
+      );
+  }
+}
+/* Spazi nella parte finale di Dietro le composizioni */
+.pagina-composizioni .nota-bottega {
+  margin-block: clamp(2rem, 5vw, 4.5rem);
+}
+
+.pagina-composizioni .prova-atelier {
+  margin-bottom: 0;
+}
+
+.pagina-composizioni .chiusura-quaderno {
+  margin-top: clamp(1.5rem, 4vw, 3rem);
+  padding-top: clamp(1.25rem, 3vw, 2rem);
+  padding-bottom: 0;
+}
+
+@media (max-width: 600px) {
+  .pagina-composizioni .nota-bottega {
+    margin-block: 2rem;
+  }
+
+  .pagina-composizioni .chiusura-quaderno .button {
+    width: min(100%, 20rem);
+  }
+}
+/* Quaderno aperto con tavola botanica */
+.quaderno-illustrato {
+  display: grid;
+  grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+  align-items: start;
+  gap: clamp(2rem, 5vw, 5rem);
+  width: min(calc(100% - 3rem), 72rem);
+  margin: 0 auto clamp(2.5rem, 6vw, 5rem);
+}
+
+.tavola-botanica {
+  margin: 0;
+  padding: clamp(.6rem, 1.5vw, 1rem);
+  border: 1px solid #a7b398;
+  background: var(--avorio);
+  box-shadow: .55rem .55rem 0 var(--salvia);
+}
+
+.tavola-botanica img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 65vh;
+  object-fit: contain;
+  background: #f4e9d2;
+}
+
+.tavola-botanica figcaption {
+  margin-top: .75rem;
+  color: #475640;
+  font: italic 1.15rem/1.3 var(--titoli);
+}
+
+.quaderno-illustrato .quaderno-atelier {
+  width: 100%;
+  margin: 0;
+  padding-left: .5rem;
+}
+
+.quaderno-illustrato .gesto-atelier {
+  grid-template-columns: minmax(0, 1fr);
+  gap: .8rem;
+  padding: clamp(1.5rem, 4vw, 3.5rem);
+}
+
+
+@media (max-width: 900px) {
+  .quaderno-illustrato {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2rem;
+  }
+
+  .tavola-botanica {
+    width: min(100%, 26rem);
+    justify-self: center;
+  }
+
+  .quaderno-illustrato .gesto-atelier {
+    padding-inline: 1.25rem .75rem;
+  }
+}
+/* Tavola botanica e filo del quaderno */
+.quaderno-illustrato .tavola-botanica {
+  position: relative;
+  overflow: hidden;
+}
+
+.quaderno-illustrato .tavola-botanica::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 2rem;
+  height: 2rem;
+  background: linear-gradient(45deg, transparent 49%, #859477 50%);
+  pointer-events: none;
+}
+
+.quaderno-illustrato .quaderno-atelier {
+  position: relative;
+}
+
+.quaderno-illustrato .gesto-atelier::before {
+  z-index: 1;
+}
+
+/* Le animazioni seguono lo scroll nei browser compatibili */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .quaderno-illustrato .tavola-botanica img {
+      animation: svela-tavola linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 80%;
+    }
+
+    .quaderno-illustrato .quaderno-atelier::after {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 .5rem;
+      width: 2px;
+      background: #526044;
+      transform-origin: top;
+      pointer-events: none;
+      animation: traccia-quaderno linear both;
+      animation-timeline: view();
+      animation-range: cover 0% cover 80%;
+    }
+  }
+}
+
+@keyframes svela-tavola {
+  from {
+    clip-path: polygon(0 0, 35% 0, 0 35%, 0 35%);
+  }
+
+  to {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+@keyframes traccia-quaderno {
+  from { transform: scaleY(0); }
+  to   { transform: scaleY(1); }
+}
+/* Luce radente sul pannello dell’esercizio */
+.prova-atelier {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-image: radial-gradient(
+    ellipse at top right,
+    rgb(216 180 110 / 16%),
+    transparent 55%
+  );
+}
+
+.prova-atelier::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    110deg,
+    transparent 38%,
+    rgb(216 180 110 / 20%) 50%,
+    transparent 62%
+  );
+  opacity: 0;
+  pointer-events: none;
+}
+
+@keyframes luce-esercizio {
+  0%   { transform: translateX(-80%); opacity: 0; }
+  25%  { opacity: 1; }
+  75%  { opacity: 1; }
+  100% { transform: translateX(80%); opacity: 0; }
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .prova-atelier:hover::before {
+    animation: luce-esercizio 1.15s ease-out;
+  }
+}
+/* Indicatore di lettura della pagina Composizioni */
+@keyframes avanzamento-quaderno {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: scroll(root block)) {
+    .pagina-composizioni::before {
+      content: "";
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 10;
+      height: 3px;
+      background: linear-gradient(to right, #b08138, #e4c17b);
+      transform-origin: left center;
+      pointer-events: none;
+      animation: avanzamento-quaderno linear both;
+      animation-timeline: scroll(root block);
+    }
+  }
+}
+
+/* Fregio botanico del footer */
+.fregio-footer {
+  grid-area: fregio;
+  justify-self: end;
+  position: relative;
+  width: 5rem;
+  height: 2.5rem;
+  color: #526044;
+}
+
+.fregio-footer::before {
+  content: "";
+  position: absolute;
+  top: 1.45rem;
+  left: .3rem;
+  width: 4.4rem;
+  height: .45rem;
+  border-top: 1px solid currentColor;
+  border-radius: 50%;
+  transform: rotate(-12deg);
+}
+
+.fregio-footer span {
+  position: absolute;
+  width: 1.25rem;
+  height: .55rem;
+  border: 1px solid currentColor;
+  border-radius: 85% 15% 85% 15%;
+  background: #a7b398;
+}
+
+.fregio-footer span:nth-child(1) {
+  top: 1rem;
+  left: 1rem;
+  transform: rotate(48deg);
+}
+
+.fregio-footer span:nth-child(2) {
+  top: 1.45rem;
+  left: 2.15rem;
+  transform: rotate(25deg);
+}
+
+.fregio-footer span:nth-child(3) {
+  top: .65rem;
+  left: 3rem;
+  transform: rotate(-28deg);
+}
+
+@media (max-width: 600px) {
+  .fregio-footer {
+    justify-self: center;
+  }
+}
+
+/* Pagina Laboratori */
+.introduzione-laboratori {
+  padding: clamp(2.75rem, 7vw, 6rem) 1.25rem;
+  background: #28392e;
+  color: var(--avorio);
+  text-align: center;
+}
+
+.introduzione-laboratori h1 {
+  font-size: clamp(2.4rem, 6vw, 5.5rem);
+  line-height: 1.05;
+}
+
+.introduzione-laboratori p {
+  max-width: 46ch;
+  margin: 1rem auto 0;
+}
+
+.incontri-atelier {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1rem, 3vw, 2rem);
+  width: min(calc(100% - 2.5rem), 64rem);
+  margin: clamp(1.75rem, 5vw, 4rem) auto;
+}
+
+.incontro-atelier {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.25rem, 3vw, 2.5rem);
+  border: 1px solid var(--bordo);
+  border-radius: .25rem 2.5rem .25rem .25rem;
+  background: var(--avorio);
+}
+
+.incontro-atelier:nth-child(2) {
+  background: #e5e9dd;
+}
+
+.incontro-atelier h2 {
+  font-size: clamp(1.9rem, 3.5vw, 3rem);
+}
+
+.incontro-esito {
+  margin: auto 0 0;
+  padding-top: 1rem;
+  border-top: 1px solid var(--bordo);
+}
+
+.incontro-esito strong {
+  display: block;
+  margin-bottom: .35rem;
+}
+
+.laboratori-testo .link-incontri {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-top: 1rem;
+  text-underline-offset: .25em;
+}
+
+@media (max-width: 700px) {
+  .incontri-atelier {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+/* Schede illustrate dei laboratori */
+.introduzione-laboratori {
+  background-image: radial-gradient(
+    ellipse at top right,
+    #405544,
+    transparent 65%
+  );
+}
+
+.incontro-atelier {
+  --spazio-scheda: clamp(1.25rem, 3vw, 2.5rem);
+  overflow: hidden;
+  padding: 0;
+  border-radius: .25rem 2.5rem .25rem .25rem;
+  box-shadow: 0 10px 24px rgb(39 45 33 / 9%);
+}
+
+.incontro-foto {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+.incontro-foto-ramo {
+  object-position: center 47%;
+}
+
+.incontro-atelier h2 {
+  margin: 1.4rem var(--spazio-scheda) 0;
+}
+
+.incontro-atelier > p:not(.incontro-esito) {
+  margin: .85rem var(--spazio-scheda) 1.5rem;
+}
+
+.incontro-esito {
+  margin-top: auto;
+  padding: 1rem var(--spazio-scheda);
+  background: #d9e2d2;
+  border-top: 1px solid #b8c1ad;
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .incontro-atelier {
+    transition: box-shadow .25s ease;
+  }
+
+  .incontro-atelier:hover {
+    box-shadow: 0 15px 34px rgb(39 45 33 / 16%);
+  }
+}
+
+/* Pagina Chi siamo */
+.chi-apertura,
+.chi-approccio {
+  width: min(calc(100% - 2.5rem), 72rem);
+  margin-inline: auto;
+}
+
+.chi-apertura {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, .9fr);
+  align-items: center;
+  gap: clamp(2rem, 7vw, 7rem);
+  padding-block: clamp(2.5rem, 7vw, 6.5rem);
+}
+
+.chi-intro h1 {
+  font-size: clamp(3rem, 7vw, 6rem);
+}
+
+.chi-intro p {
+  max-width: 44ch;
+}
+
+.chi-sottotitolo {
+  margin: .9rem 0 1.1rem;
+  color: #526044;
+  font: italic clamp(1.45rem, 3vw, 2.35rem)/1.2 var(--titoli);
+}
+
+.chi-demo {
+  margin-top: 1.5rem;
+  padding-top: .8rem;
+  border-top: 1px solid var(--bordo);
+  font-size: .9rem;
+}
+
+.chi-foto {
+  margin: 0 .6rem .6rem 0;
+  box-shadow: .6rem .6rem 0 var(--salvia);
+}
+
+.chi-foto img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+.chi-approccio {
+  padding: clamp(2rem, 5vw, 4rem) clamp(1.25rem, 4vw, 3.5rem);
+  background: var(--salvia-tenue);
+}
+
+.chi-approccio h2 {
+  font-size: clamp(2.15rem, 4.5vw, 4rem);
+}
+
+.chi-principi {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.25rem, 3vw, 3rem);
+  margin-block: 1.75rem 2rem;
+}
+
+.chi-principi article {
+  padding-top: .9rem;
+  border-top: 1px solid #859477;
+}
+
+.chi-principi h3 {
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+}
+
+.chi-principi p {
+  margin: .6rem 0 0;
+}
+
+.link-chi-siamo {
+  color: #475640;
+  text-underline-offset: .25em;
+}
+
+@media (max-width: 760px) {
+  .chi-apertura,
+  .chi-principi {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .chi-foto {
+    width: min(calc(100% - .6rem), 28rem);
+    justify-self: center;
+  }
+}
+/* Chi siamo — apertura della bottega */
+.pagina-chi-siamo .chi-apertura {
+  gap: clamp(2.5rem, 7vw, 7rem);
+}
+
+.pagina-chi-siamo .chi-intro .label {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  color: #526044;
+}
+
+.pagina-chi-siamo .chi-intro .label::before {
+  content: "";
+  width: 2rem;
+  height: 1px;
+  background: #859477;
+}
+
+.pagina-chi-siamo .chi-intro h1 {
+  max-width: 12ch;
+  font-size: clamp(2.6rem, 6vw, 6rem);
+  line-height: 1.02;
+}
+
+.pagina-chi-siamo .chi-intro h1 + p {
+  margin: 1.4rem 0 0;
+  font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+}
+
+.pagina-chi-siamo .chi-foto {
+  padding: clamp(.55rem, 1.4vw, 1rem);
+  border: 1px solid #a7b398;
+  border-radius: .25rem 4rem .25rem .25rem;
+  background: var(--avorio);
+  box-shadow: .65rem .65rem 0 var(--salvia);
+}
+
+.pagina-chi-siamo .chi-foto img {
+  border-radius: .15rem 3.25rem .15rem .15rem;
+}
+
+.pagina-chi-siamo .chi-foto figcaption {
+  margin-top: .75rem;
+  color: #475640;
+  font: italic 1rem/1.4 var(--titoli);
+}
+
+/* Il racconto del nome */
+.pagina-chi-siamo .chi-origine {
+  background: radial-gradient(
+    ellipse at top right,
+    #405544,
+    #28392e 68%
+  );
+  color: var(--avorio);
+}
+
+.pagina-chi-siamo .chi-origine-interno {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, .9fr);
+  align-items: center;
+  gap: clamp(1.5rem, 6vw, 5rem);
+  width: min(calc(100% - 2.5rem), 64rem);
+  margin-inline: auto;
+  padding-block: clamp(2.75rem, 7vw, 6rem);
+}
+
+.pagina-chi-siamo .chi-origine h2 {
+  font-size: clamp(2.1rem, 5vw, 4.5rem);
+  line-height: 1.05;
+}
+
+.pagina-chi-siamo .chi-origine em {
+  color: #c4d3b8;
+}
+
+.pagina-chi-siamo .chi-origine p {
+  max-width: 43ch;
+  margin: 0;
+  padding-left: 1.25rem;
+  border-left: 1px solid #819280;
+}
+
+/* I tre appunti */
+.pagina-chi-siamo .chi-approccio {
+  margin-top: clamp(2rem, 6vw, 5rem);
+}
+
+.pagina-chi-siamo .chi-principi article {
+  padding: 1.1rem;
+  border-top: 2px solid #859477;
+  background: var(--avorio);
+}
+
+/* Entrata della fotografia */
+@keyframes chi-foto-entrata {
+  from { opacity: .35; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .pagina-chi-siamo .chi-foto {
+    animation: chi-foto-entrata .7s ease-out both;
+  }
+}
+
+@media (max-width: 760px) {
+  .pagina-chi-siamo .chi-apertura {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.75rem;
+  }
+
+  .pagina-chi-siamo .chi-origine-interno {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .pagina-chi-siamo .chi-principi {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+/* Ombra della finestra nel racconto del nome */
+.pagina-chi-siamo .chi-origine {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.pagina-chi-siamo .chi-origine::before {
+  content: "";
+  position: absolute;
+  inset: -5rem -3rem -5rem 40%;
+  z-index: -1;
+  background: repeating-linear-gradient(
+    120deg,
+    transparent 0 3.5rem,
+    rgb(223 234 204 / 13%) 4.5rem 7rem,
+    transparent 8rem 11rem
+  );
+  mask-image: linear-gradient(to right, transparent, #000 70%);
+  pointer-events: none;
+}
+
+@keyframes chi-ombra-finestra {
+  from { transform: translate(1rem, 2.5rem); }
+  to   { transform: translate(-1rem, -2.5rem); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .pagina-chi-siamo .chi-origine {
+      view-timeline-name: --racconto-chi-siamo;
+    }
+
+    .pagina-chi-siamo .chi-origine::before {
+      animation: chi-ombra-finestra linear both;
+      animation-timeline: --racconto-chi-siamo;
+      animation-range: cover 0% cover 100%;
+    }
+  }
+}
+
+@media (max-width: 760px) {
+  .pagina-chi-siamo .chi-origine::before {
+    left: 25%;
+    opacity: .65;
+  }
+}
+/* Tre motivi grafici per gli appunti dell’atelier */
+.pagina-chi-siamo .chi-principi article {
+  position: relative;
+  padding: 1.25rem;
+  border: 1px solid #b8c1ad;
+  border-radius: .2rem 1.75rem .2rem .2rem;
+  box-shadow: .25rem .25rem 0 rgb(133 148 119 / 20%);
+}
+
+.pagina-chi-siamo .chi-principi article::before {
+  content: "";
+  display: block;
+  width: 4rem;
+  height: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* Stagioni: tre steli inclinati */
+.pagina-chi-siamo .chi-principi article:nth-child(1)::before {
+  background:
+    linear-gradient(115deg, transparent 47%, #526044 48% 52%, transparent 53%)
+      0 bottom / 1.1rem 65% no-repeat,
+    linear-gradient(105deg, transparent 47%, #859477 48% 52%, transparent 53%)
+      45% bottom / 1.1rem 100% no-repeat,
+    linear-gradient(95deg, transparent 47%, #526044 48% 52%, transparent 53%)
+      90% bottom / 1.1rem 78% no-repeat;
+}
+
+/* Materiali: un campione salvia e uno color argilla */
+.pagina-chi-siamo .chi-principi article:nth-child(2)::before {
+  background:
+    linear-gradient(#a7b398, #a7b398) 0 0 / 2.4rem 1.4rem no-repeat,
+    linear-gradient(#b48662, #b48662) 100% 100% / 2.4rem 1.4rem no-repeat;
+}
+
+/* Distanza: due linee con spazio al centro */
+.pagina-chi-siamo .chi-principi article:nth-child(3)::before {
+  background:
+    linear-gradient(#526044, #526044) left center / 1.15rem 1px no-repeat,
+    linear-gradient(#526044, #526044) right center / 1.15rem 1px no-repeat;
+}
+/* Cambio di luce nella fotografia della bottega */
+.pagina-chi-siamo .chi-luce-toggle {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+.pagina-chi-siamo .chi-luce-comando {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  min-height: 44px;
+  margin-top: .5rem;
+  color: #475640;
+  cursor: pointer;
+}
+
+.pagina-chi-siamo .chi-luce-comando span {
+  display: grid;
+  align-items: center;
+  width: 2.55rem;
+  height: 1.4rem;
+  padding: .15rem;
+  border: 1px solid #859477;
+  border-radius: 99px;
+  background: var(--salvia);
+}
+
+.pagina-chi-siamo .chi-luce-comando span::before {
+  content: "";
+  width: .95rem;
+  height: .95rem;
+  border-radius: 50%;
+  background: #526044;
+}
+
+.pagina-chi-siamo .chi-luce-toggle:focus-visible ~ .chi-luce-comando {
+  outline: 2px solid #526044;
+  outline-offset: 4px;
+}
+
+.pagina-chi-siamo .chi-luce-toggle:checked ~ img {
+  filter: brightness(.50) sepia(.2) saturate(.85);
+}
+
+.pagina-chi-siamo .chi-luce-toggle:checked ~ .chi-luce-comando span {
+  background: #526044;
+}
+
+.pagina-chi-siamo .chi-luce-toggle:checked ~ .chi-luce-comando span::before {
+  transform: translateX(1.05rem);
+  background: var(--avorio);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .pagina-chi-siamo .chi-foto img {
+    transition: filter .65s ease;
+  }
+
+  .pagina-chi-siamo .chi-luce-comando span::before {
+    transition: transform .25s ease;
+  }
+}
+/* Cartoncino di chiusura della pagina Chi siamo */
+.pagina-chi-siamo .chi-invito {
+  display: block;
+  width: min(calc(100% - 3rem), 42rem);
+  margin: clamp(2rem, 5vw, 4rem) auto 0;
+  padding: clamp(1.25rem, 4vw, 2.5rem);
+  border: 1px solid #859477;
+  border-radius: .25rem 2.5rem .25rem .25rem;
+  background: var(--avorio);
+  box-shadow: .45rem .45rem 0 var(--salvia);
+  text-decoration: none;
+}
+
+.pagina-chi-siamo .chi-invito .label {
+  margin: 0 0 .55rem;
+  color: #526044;
+}
+
+.chi-invito-titolo {
+  display: block;
+  font: italic clamp(1.7rem, 4.5vw, 3rem)/1.15 var(--titoli);
+}
+
+.pagina-chi-siamo .chi-invito:focus-visible {
+  background: #e9eee3;
+  outline-offset: 6px;
+}
+
+@media (hover: hover) {
+  .pagina-chi-siamo .chi-invito:hover {
+    background: #e9eee3;
+  }
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .pagina-chi-siamo .chi-invito {
+    transition: transform .2s ease, background-color .2s ease;
+  }
+
+  .pagina-chi-siamo .chi-invito:hover {
+    transform: translateY(-3px);
+  }
+}
+/* Una giornata in bottega */
+.pagina-chi-siamo .chi-giornata {
+  width: min(calc(100% - 2.5rem), 60rem);
+  margin: clamp(2.5rem, 7vw, 6rem) auto;
+}
+
+.chi-giornata h2 {
+  font-size: clamp(2.2rem, 5vw, 4.25rem);
+}
+
+.chi-momenti {
+  margin: 1.75rem 0 0;
+  border-bottom: 1px solid var(--bordo);
+}
+
+.chi-momenti > div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2.5fr);
+  gap: .5rem 2rem;
+  padding: 1.25rem clamp(.75rem, 3vw, 2rem);
+  border-top: 1px solid var(--bordo);
+}
+
+.chi-momenti > div:nth-child(2) {
+  background: var(--salvia-tenue);
+}
+
+.chi-momenti dt {
+  color: #475640;
+  font: italic 1.4rem/1.3 var(--titoli);
+}
+
+.chi-momenti dd {
+  max-width: 50ch;
+  margin: 0;
+}
+
+@media (max-width: 680px) {
+  .chi-momenti > div {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+/* Arco solare della giornata in bottega */
+.chi-giornata-testata {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.chi-arco-solare {
+  --raggio-sole: 4rem;
+  position: relative;
+  display: block;
+  flex: 0 0 auto;
+  width: calc(2 * var(--raggio-sole));
+  height: var(--raggio-sole);
+  margin: .5rem .5rem .15rem;
+  border: 1px solid #859477;
+  border-bottom: 0;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  background: linear-gradient(to top, transparent, rgb(167 179 152 / 22%));
+}
+
+.chi-arco-solare::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: .8rem;
+  height: .8rem;
+  border-radius: 50%;
+  background: #b08138;
+  box-shadow: 0 0 0 4px rgb(176 129 56 / 16%);
+  transform: translate(-50%, 50%) translateY(calc(-1 * var(--raggio-sole)));
+}
+
+@keyframes chi-percorso-sole {
+  from {
+    transform: translate(-50%, 50%) rotate(-70deg)
+      translateY(calc(-1 * var(--raggio-sole)));
+  }
+
+  to {
+    transform: translate(-50%, 50%) rotate(70deg)
+      translateY(calc(-1 * var(--raggio-sole)));
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .chi-giornata {
+      view-timeline-name: --giornata-bottega;
+    }
+
+    .chi-arco-solare::after {
+      animation: chi-percorso-sole linear both;
+      animation-timeline: --giornata-bottega;
+      animation-range: entry 0% exit 100%;
+    }
+  }
+}
+
+@media (max-width: 680px) {
+  .chi-giornata-testata {
+    flex-direction: column;
+    align-items: start;
+    gap: 1rem;
+  }
+
+  .chi-arco-solare {
+    --raggio-sole: 2.75rem;
+    align-self: end;
+  }
+}
+/* Entrata dei tre momenti della giornata */
+.chi-momenti dt::after {
+  content: "";
+  display: block;
+  width: 2.25rem;
+  height: 1px;
+  margin-top: .5rem;
+  background: #b08138;
+  transform-origin: left center;
+}
+
+@keyframes chi-momento-entrata {
+  from { opacity: .75; transform: translateY(.6rem); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes chi-filetto-entrata {
+  from { transform: scaleX(.2); }
+  to   { transform: scaleX(1); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .chi-momenti > div {
+      view-timeline-name: --momento-bottega;
+      animation: chi-momento-entrata linear both;
+      animation-timeline: --momento-bottega;
+      animation-range: entry 0% entry 85%;
+    }
+
+    .chi-momenti dt::after {
+      animation: chi-filetto-entrata linear both;
+      animation-timeline: --momento-bottega;
+      animation-range: entry 15% entry 100%;
+    }
+  }
+}
+/* Anteprima del quaderno in fondo a Chi siamo */
+.pagina-chi-siamo .chi-invito {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  width: min(calc(100% - 3rem), 64rem);
+  padding: 0;
+  overflow: hidden;
+}
+
+.chi-invito-testo {
+  align-self: center;
+  padding: clamp(1.5rem, 4vw, 3rem);
+}
+
+.chi-invito-testo p {
+  max-width: 33ch;
+  margin: .8rem 0 1.15rem;
+}
+
+.chi-invito-azione {
+  color: #475640;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: .25em;
+}
+
+
+@media (max-width: 700px) {
+  .pagina-chi-siamo .chi-invito {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+}
+/* Fregio tra il racconto dell’atelier e il quaderno */
+.chi-separatore {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: .85rem;
+  width: min(62%, 22rem);
+  margin: clamp(1.75rem, 4vw, 3rem) auto 0;
+}
+
+.chi-separatore::before,
+.chi-separatore::after {
+  content: "";
+  height: 1px;
+  background: linear-gradient(to right, transparent, #859477);
+  transform-origin: right center;
+}
+
+.chi-separatore::after {
+  background: linear-gradient(to left, transparent, #859477);
+  transform-origin: left center;
+}
+
+.chi-separatore span {
+  width: 1.65rem;
+  height: .7rem;
+  border: 1px solid #526044;
+  border-radius: 85% 15% 85% 15%;
+  background: linear-gradient(0deg, #a7b398 45%, #526044 50%, #c4ceb8 55%);
+  transform: rotate(-25deg);
+}
+
+.pagina-chi-siamo .chi-separatore + .chi-invito {
+  margin-top: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+@keyframes chi-filetti-separatore {
+  from { transform: scaleX(.25); }
+  to   { transform: scaleX(1); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .chi-separatore {
+      view-timeline-name: --fregio-chi-siamo;
+    }
+
+    .chi-separatore::before,
+    .chi-separatore::after {
+      animation: chi-filetti-separatore linear both;
+      animation-timeline: --fregio-chi-siamo;
+      animation-range: entry 0% entry 100%;
+    }
+  }
+}
+/* Ultimo dettaglio della copertina del quaderno */
+.chi-invito-foto {
+  position: relative;
+  min-height: 15rem;
+  overflow: hidden;
+  background: var(--salvia);
+}
+
+.chi-invito-foto img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 58%;
+}
+
+.chi-invito-azione {
+  display: inline-block;
+  padding-bottom: .2rem;
+  text-decoration: none;
+}
+
+.chi-invito-azione::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(.45);
+  transform-origin: left center;
+}
+
+.chi-invito:is(:hover, :focus-visible) .chi-invito-azione::after {
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .chi-invito-foto img {
+    transition: transform .55s ease;
+  }
+
+  .chi-invito-azione::after {
+    transition: transform .25s ease;
+  }
+
+  .chi-invito:focus-visible .chi-invito-foto img {
+    transform: scale(1.06);
+  }
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .chi-invito:hover .chi-invito-foto img {
+    transform: scale(1.06);
+  }
+}
+
+@media (max-width: 700px) {
+  .chi-invito-foto {
+    grid-row: 1;
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+  }
+}
+/* Pagina Servizi */
+.servizi-apertura {
+  padding: clamp(3rem, 8vw, 7rem) 1.25rem;
+  background: radial-gradient(ellipse at top right, #405544, #28392e 70%);
+  color: var(--avorio);
+  text-align: center;
+}
+
+.servizi-apertura .label {
+  color: #c4d3b8;
+}
+
+.servizi-apertura h1 {
+  font-size: clamp(2.7rem, 7vw, 6rem);
+  line-height: 1.05;
+}
+
+.servizi-apertura h1 + p {
+  max-width: 42ch;
+  margin: 1.2rem auto 0;
+}
+
+.servizi-elenco {
+  width: min(calc(100% - 2.5rem), 64rem);
+  margin: clamp(2rem, 6vw, 5rem) auto;
+  border-bottom: 1px solid var(--bordo);
+}
+
+.servizio {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  gap: 1rem clamp(1.5rem, 5vw, 4rem);
+  padding: clamp(1.5rem, 4vw, 3rem) clamp(.75rem, 3vw, 2rem);
+  border-top: 1px solid var(--bordo);
+}
+
+.servizio h2 {
+  font-size: clamp(1.9rem, 4vw, 3.4rem);
+}
+
+.servizio p {
+  margin: 0;
+}
+
+.servizio .servizio-esempio {
+  margin-top: 1rem;
+  padding: .75rem 1rem;
+  border-left: 2px solid #859477;
+  background: var(--salvia-tenue);
+}
+
+.servizio-esempio strong {
+  display: block;
+  margin-bottom: .2rem;
+}
+
+@media (max-width: 700px) {
+  .servizio {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+/* Esempi illustrati della pagina Servizi */
+.pagina-servizi .servizi-elenco {
+  width: min(calc(100% - 2.5rem), 72rem);
+}
+
+.pagina-servizi .servizio {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-areas: "foto testo";
+  align-items: center;
+  gap: clamp(1.5rem, 5vw, 4.5rem);
+  padding: clamp(2rem, 5vw, 4rem) .5rem;
+}
+
+.pagina-servizi .servizio:nth-child(even) {
+  grid-template-areas: "testo foto";
+}
+
+.servizio-foto {
+  grid-area: foto;
+  margin: 0 .5rem .5rem 0;
+  overflow: hidden;
+  border-radius: .2rem 2.75rem .2rem .2rem;
+  background: var(--salvia-tenue);
+  box-shadow: .5rem .5rem 0 var(--salvia);
+}
+
+.servizio-foto img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.servizio-testo {
+  grid-area: testo;
+}
+
+.servizio-testo h2 + p {
+  margin-top: 1rem;
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .servizio-foto img {
+    transition: transform .55s ease;
+  }
+
+  .servizio-foto:hover img {
+    transform: scale(1.04);
+  }
+}
+
+@media (max-width: 760px) {
+  .pagina-servizi .servizio,
+  .pagina-servizi .servizio:nth-child(even) {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "foto"
+      "testo";
+  }
+}
+/* Indice dei servizi */
+.pagina-servizi .servizi-indice {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .65rem;
+  width: min(calc(100% - 2.5rem), 58rem);
+  margin: -1.35rem auto 0;
+}
+
+.servizi-indice a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: .6rem 1.1rem;
+  border: 1px solid #859477;
+  border-radius: .15rem 1.2rem .15rem .15rem;
+  background: var(--avorio);
+  color: #475640;
+  text-align: center;
+  box-shadow: 0 3px 0 var(--salvia);
+}
+
+.servizi-indice a:hover,
+.servizi-indice a:focus-visible {
+  background: var(--salvia-tenue);
+}
+
+.pagina-servizi .servizio {
+  scroll-margin-top: 1.5rem;
+}
+
+.pagina-servizi .servizio:target {
+  border-top-color: #526044;
+  background: linear-gradient(
+    to bottom,
+    rgb(133 148 119 / 14%),
+    transparent 6rem
+  );
+}
+
+@media (max-width: 540px) {
+  .pagina-servizi .servizi-indice {
+    flex-direction: column;
+    width: min(calc(100% - 2.5rem), 22rem);
+    margin-top: 1rem;
+  }
+}
+/* Da dove partiamo — pannello finale dei servizi */
+.servizi-metodo {
+  width: min(calc(100% - 3rem), 72rem);
+  margin: 0 auto;
+  padding: clamp(1.75rem, 5vw, 4.5rem);
+  border-radius: .25rem clamp(2rem, 6vw, 5rem) .25rem .25rem;
+  background: radial-gradient(ellipse at top right, #405544, #28392e 70%);
+  color: var(--avorio);
+  box-shadow: .55rem .55rem 0 var(--salvia);
+}
+
+.servizi-metodo h2 {
+  font-size: clamp(2.25rem, 5vw, 4.25rem);
+}
+
+.servizi-appunti {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1rem, 3vw, 2rem);
+  margin-top: 1.75rem;
+}
+
+.servizi-appunti > div {
+  padding-top: .85rem;
+  border-top: 1px solid #a7b398;
+}
+
+.servizi-appunti h3 {
+  color: #d9e2d2;
+  font-size: clamp(1.35rem, 2.5vw, 1.9rem);
+}
+
+.servizi-appunti p {
+  max-width: 38ch;
+  margin: .55rem 0 0;
+}
+
+@media (max-width: 760px) {
+  .servizi-appunti {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+/* Schede di preparazione nella pagina Servizi */
+.servizi-preparazione {
+  width: min(calc(100% - 2.5rem), 48rem);
+  margin: clamp(2.5rem, 6vw, 5rem) auto 0;
+}
+
+.servizi-preparazione h2 {
+  margin-bottom: 1.35rem;
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+}
+
+.servizi-preparazione details {
+  margin-top: .65rem;
+  padding: 0;
+  border: 1px solid var(--bordo);
+  border-radius: .25rem 1.25rem .25rem .25rem;
+  background: var(--avorio);
+}
+
+.servizi-preparazione details[open] {
+  background: var(--salvia-tenue);
+  border-color: #859477;
+}
+
+.servizi-preparazione summary {
+  min-height: 48px;
+  padding: .85rem 1rem;
+  color: #475640;
+  font: italic clamp(1.15rem, 2vw, 1.45rem)/1.35 var(--titoli);
+}
+
+.servizi-preparazione summary::marker {
+  color: #526044;
+}
+
+.servizi-preparazione details p {
+  max-width: 58ch;
+  margin: 0;
+  padding: 0 1rem 1rem;
+}
+
+@media (hover: hover) {
+  .servizi-preparazione summary:hover {
+    text-decoration: underline;
+    text-underline-offset: .2em;
+  }
+}
+/* Spazi attorno ai fregi nella pagina Servizi */
+.pagina-servizi .servizi-elenco {
+  margin-bottom: 0;
+}
+
+
+.pagina-servizi .chi-separatore + .servizi-preparazione {
+  margin-top: 0;
+}
+/* Apertura delle schede nella pagina Servizi */
+.servizi-preparazione summary {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: .75rem;
+  list-style: none;
+  cursor: pointer;
+}
+
+.servizi-preparazione summary::-webkit-details-marker {
+  display: none;
+}
+
+.servizi-preparazione summary::after {
+  content: "";
+  width: 1.8rem;
+  height: 1.8rem;
+  border: 1px solid #859477;
+  border-radius: 50%;
+  color: #526044;
+  background:
+    linear-gradient(currentColor, currentColor) center / .65rem 1px no-repeat,
+    linear-gradient(currentColor, currentColor) center / 1px .65rem no-repeat,
+    var(--avorio);
+}
+
+.servizi-preparazione details[open] summary::after {
+  background-color: #526044;
+  background-size: .65rem 1px, 1px 0;
+  color: var(--avorio);
+}
+
+.servizi-preparazione details[open] > p {
+  margin: 0 1rem;
+  padding: .75rem 0 1rem;
+  border-top: 1px solid #a7b398;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .servizi-preparazione summary::after {
+    transition: background-color .2s ease, background-size .2s ease, color .2s ease;
+  }
+
+  .servizi-preparazione details[open] > p {
+    animation: servizi-testo-entrata .25s ease-out;
+  }
+}
+
+@keyframes servizi-testo-entrata {
+  from { opacity: .55; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+/* Angolo dorato sulle fotografie dei servizi */
+.pagina-servizi .servizio-foto {
+  position: relative;
+}
+
+.pagina-servizi .servizio-foto::after {
+  content: "";
+  position: absolute;
+  right: .8rem;
+  bottom: .8rem;
+  width: 2.6rem;
+  height: 2.6rem;
+  background: linear-gradient(
+    135deg,
+    #9c713b 15%,
+    #d2a968 40%,
+    #f4dba4 50%,
+    #b08245 65%
+  );
+  background-size: 250% 250%;
+  background-position: 100% 100%;
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+  pointer-events: none;
+}
+
+@keyframes servizi-riflesso-angolo {
+  from { background-position: 100% 100%; }
+  to   { background-position: 0 0; }
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .pagina-servizi .servizio-foto:hover::after {
+    animation: servizi-riflesso-angolo .85s ease-out;
+  }
+}
+
+@media (max-width: 760px) {
+  .pagina-servizi .servizio-foto::after {
+    right: .6rem;
+    bottom: .6rem;
+    width: 1.9rem;
+    height: 1.9rem;
+  }
+}
+/* Pagina Contatti */
+.contatti-quaderno {
+  display: grid;
+  grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+  width: min(calc(100% - 3rem), 68rem);
+  margin: clamp(2rem, 6vw, 5rem) auto 0;
+  border: 1px solid var(--bordo);
+  border-radius: .25rem clamp(2rem, 5vw, 4rem) .25rem .25rem;
+  overflow: hidden;
+  box-shadow: .55rem .55rem 0 var(--salvia);
+}
+
+.contatti-intro,
+.contatti-modulo {
+  padding: clamp(1.25rem, 4vw, 3.5rem);
+}
+
+.contatti-intro {
+  background: radial-gradient(ellipse at top right, #405544, #28392e 72%);
+  color: var(--avorio);
+}
+
+.contatti-intro .label {
+  color: #d9e2d2;
+}
+
+.contatti-intro h1 {
+  font-size: clamp(2.8rem, 6vw, 5.5rem);
+}
+
+.contatti-intro p:last-child {
+  max-width: 32ch;
+  margin: 1.25rem 0 0;
+}
+
+.contatti-modulo {
+  display: grid;
+  gap: 1.15rem;
+  min-width: 0;
+  background: var(--avorio);
+}
+
+.contatti-modulo p {
+  margin: 0;
+}
+
+#nota-contatti {
+  padding-left: .8rem;
+  border-left: 2px solid #859477;
+  color: #475640;
+}
+
+.contatti-campi {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.contatti-modulo label {
+  display: grid;
+  gap: .35rem;
+  min-width: 0;
+  font-weight: 600;
+}
+
+.contatti-modulo :is(input, select, textarea) {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  padding: .65rem .75rem;
+  border: 1px solid #859477;
+  border-radius: .25rem;
+  background: #faf8ef;
+  color: var(--inchiostro);
+  font: inherit;
+  font-weight: 400;
+}
+
+.contatti-modulo textarea {
+  resize: vertical;
+}
+
+.contatti-modulo :is(input, select, textarea):focus-visible {
+  outline: 2px solid #526044;
+  outline-offset: 2px;
+}
+
+.contatti-modulo .button {
+  justify-self: start;
+  min-height: 44px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#esito-contatti {
+  color: #475640;
+  font-weight: 600;
+}
+
+#esito-contatti:empty {
+  margin-top: -1.15rem;
+}
+
+@media (max-width: 760px) {
+  .contatti-quaderno {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .contatti-campi {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .contatti-modulo .button {
+    width: 100%;
+  }
+}
+/* Illustrazione botanica nella pagina Contatti */
+.pagina-contatti .contatti-intro {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-bottom: clamp(4rem, 9vw, 8rem);
+}
+
+.pagina-contatti .contatti-intro::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: url("../img/tavola-ulivo.png") center 55% / cover no-repeat;
+  opacity: .28;
+  mask-image: linear-gradient(to bottom, transparent 8%, rgb(0 0 0 / 30%) 36%, #000 87%);
+  pointer-events: none;
+}
+
+.pagina-contatti .contatti-intro h1 + p {
+  padding-left: 1rem;
+  border-left: 1px solid #d2a968;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .pagina-contatti .contatti-intro::after {
+    animation: contatti-tavola-entrata .8s ease-out both;
+  }
+}
+
+@keyframes contatti-tavola-entrata {
+  from { opacity: .1; }
+  to   { opacity: .28; }
+}
+
+@media (max-width: 760px) {
+  .pagina-contatti .contatti-intro {
+    padding-bottom: 5rem;
+  }
+
+  .pagina-contatti .contatti-intro::after {
+    background-position: center 65%;
+    opacity: .2;
+    animation: none;
+  }
+}
+/* Dettagli del modulo Contatti */
+.pagina-contatti .contatti-obbligatori {
+  margin-bottom: -.45rem;
+  color: #475640;
+  font-size: .9rem;
+}
+
+.contatti-modulo label:focus-within {
+  color: #526044;
+}
+
+.contatti-modulo :is(input, select, textarea):focus {
+  border-color: #526044;
+  background: #fffdf6;
+  box-shadow: 0 0 0 3px rgb(133 148 119 / 18%);
+}
+
+.pagina-contatti #esito-contatti:not(:empty) {
+  padding: .85rem 1rem;
+  border-left: 3px solid #859477;
+  border-radius: .15rem 1rem 1rem .15rem;
+  background: var(--salvia-tenue);
+  color: #334631;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .contatti-modulo :is(input, select, textarea) {
+    transition: background-color .2s ease, box-shadow .2s ease;
+  }
+}
+/* Bordo da busta per il modulo */
+.pagina-contatti .contatti-modulo {
+  position: relative;
+}
+
+.pagina-contatti .contatti-modulo::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 5px;
+  background: repeating-linear-gradient(
+    125deg,
+    #859477 0 12px,
+    var(--avorio) 12px 19px,
+    #c49b61 19px 31px,
+    var(--avorio) 31px 38px
+  );
+  pointer-events: none;
+}
+
+/* Timbro della simulazione completata */
+.pagina-contatti #esito-contatti:not(:empty) {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+}
+
+.pagina-contatti #esito-contatti:not(:empty)::before {
+  content: "";
+  flex: 0 0 1.9rem;
+  width: 1.9rem;
+  height: 1.9rem;
+  border-radius: 50%;
+  background:
+    linear-gradient(45deg, transparent 41%, #f4f1e7 42% 57%, transparent 58%)
+      .47rem .97rem / .39rem .32rem no-repeat,
+    linear-gradient(-45deg, transparent 42%, #f4f1e7 43% 56%, transparent 57%)
+      .72rem .68rem / .72rem .63rem no-repeat,
+    #526044;
+  box-shadow: 0 0 0 2px #c4d3b8;
+}
+
+@keyframes contatti-timbro {
+  from { opacity: 0; transform: scale(1.2) rotate(-12deg); }
+  to   { opacity: 1; transform: scale(1) rotate(0); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .pagina-contatti #esito-contatti:not(:empty)::before {
+    animation: contatti-timbro .3s ease-out both;
+  }
+}
+.contatti-invito {
+  width: min(calc(100% - 2.5rem), 48rem);
+  margin: clamp(1.5rem, 4vw, 2.75rem) auto 0;
+  text-align: center;
+}
+/* Collegamenti sotto il quaderno dei contatti */
+.pagina-contatti .contatti-rimandi {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .4rem 1.5rem;
+  width: min(calc(100% - 2.5rem), 36rem);
+  margin: .75rem auto 0;
+}
+
+.pagina-contatti .contatti-rimandi a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding-inline: .65rem;
+  color: #475640;
+  text-decoration: underline;
+  text-decoration-color: #859477;
+  text-underline-offset: .3em;
+}
+
+.pagina-contatti .contatti-rimandi a:is(:hover, :focus-visible) {
+  color: var(--inchiostro);
+  text-decoration-color: currentColor;
+}
+
+@media (max-width: 480px) {
+  .pagina-contatti .contatti-rimandi {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+/* Azioni del modulo Contatti */
+.contatti-azioni {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .65rem 1rem;
+}
+
+.contatti-svuota {
+  min-height: 44px;
+  padding: .55rem .95rem;
+  border: 1px solid #859477;
+  border-radius: .3rem;
+  background: transparent;
+  color: #475640;
+  font: inherit;
+  cursor: pointer;
+}
+
+.contatti-svuota:is(:hover, :focus-visible) {
+  background: var(--salvia-tenue);
+}
+
+.contatti-svuota:focus-visible {
+  outline: 2px solid #526044;
+  outline-offset: 3px;
+}
+
+@media (max-width: 480px) {
+  .contatti-azioni {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+/* Copertina fotografica di Dietro le composizioni */
+.pagina-composizioni .apertura-quaderno {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas: "copertina";
+  width: 100%;
+  max-width: none;
+  margin: 0 0 clamp(2.75rem, 6vw, 5.5rem);
+  overflow: hidden;
+  border: 0;
+  border-radius: 0;
+  background: #28392e;
+  color: var(--avorio);
+  box-shadow: none;
+}
+
+.pagina-composizioni .apertura-quaderno::before,
+.pagina-composizioni .apertura-quaderno::after {
+  content: none;
+}
+
+.pagina-composizioni .apertura-quaderno > img {
+  grid-area: copertina;
+  display: block;
+  width: 100%;
+  height: clamp(26rem, 48vw, 40rem);
+  border-radius: 0;
+  object-fit: cover;
+  object-position: center 55%;
+}
+
+.pagina-composizioni .apertura-quaderno-testo {
+  grid-area: copertina;
+  align-self: end;
+  justify-self: stretch;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: clamp(5rem, 12vw, 10rem) clamp(1.5rem, 7vw, 7rem) 2.75rem;
+  border: 0;
+  background: linear-gradient(
+    to top,
+    rgb(18 25 19 / 96%),
+    rgb(18 25 19 / 66%) 43%,
+    transparent 100%
+  );
+  box-shadow: none;
+  transform: none;
+}
+
+.pagina-composizioni .apertura-quaderno h1 {
+  max-width: 16ch;
+  font-size: clamp(2.75rem, 6.5vw, 6.25rem);
+  line-height: 1.02;
+}
+
+.pagina-composizioni .apertura-quaderno-testo p {
+  min-height: 1.65em;
+  margin: 1rem 0 0;
+  padding-left: .85rem;
+  border-left: 2px solid #d2a968;
+  color: var(--avorio);
+}
+
+@media (max-width: 760px) {
+  .pagina-composizioni .apertura-quaderno {
+    grid-template-areas: "foto" "testo";
+  }
+
+  .pagina-composizioni .apertura-quaderno > img {
+    grid-area: foto;
+    height: clamp(13rem, 62vw, 24rem);
+  }
+
+  .pagina-composizioni .apertura-quaderno-testo {
+    grid-area: testo;
+    padding: 1.5rem 1.25rem 2rem;
+    background: #28392e;
+  }
+
+  .pagina-composizioni .apertura-quaderno h1 {
+    font-size: clamp(2.15rem, 8vw, 3.5rem);
+  }
+}
+/* Passaggio dalla copertina al quaderno illustrato */
+.pagina-composizioni .apertura-quaderno {
+  margin-bottom: 0;
+}
+
+.quaderno-introduzione {
+  width: min(calc(100% - 2.5rem), 42rem);
+  margin: 0 auto;
+  padding-block: clamp(2.5rem, 6vw, 4.75rem) clamp(1.75rem, 4vw, 3.25rem);
+  text-align: center;
+}
+
+.pagina-composizioni .quaderno-introduzione .chi-separatore {
+  margin: 0 auto 1.15rem;
+}
+
+.quaderno-introduzione h2 {
+  font-size: clamp(2.15rem, 5vw, 4rem);
+  line-height: 1.08;
+}
+
+.quaderno-introduzione p {
+  max-width: 46ch;
+  margin: .85rem auto 0;
+  color: #475640;
+}
+
+@media (max-width: 600px) {
+  .quaderno-introduzione {
+    padding-block: 2rem 1.5rem;
+  }
+}
+/* Fondo carta per la tavola e i tre gesti */
+.pagina-composizioni .quaderno-illustrato {
+  width: min(calc(100% - 2.5rem), 72rem);
+  gap: clamp(1.75rem, 4vw, 4rem);
+  padding: clamp(1.25rem, 4vw, 3rem);
+  border: 1px solid #b8c1ad;
+  border-radius: .25rem clamp(2rem, 5vw, 4rem) .25rem .25rem;
+  background: linear-gradient(135deg, #fbf6e9, #e9eee3);
+}
+
+.pagina-composizioni .tavola-botanica {
+  margin-right: .45rem;
+  background: #fffaf0;
+  box-shadow: .45rem .45rem 0 var(--salvia);
+}
+
+.pagina-composizioni .quaderno-illustrato .gesto-atelier {
+  padding: clamp(1.25rem, 3vw, 2.4rem);
+  background: rgb(255 250 240 / 72%);
+}
+
+.pagina-composizioni .quaderno-illustrato .gesto-atelier:nth-child(even) {
+  background: rgb(217 226 210 / 62%);
+}
+
+@media (max-width: 900px) {
+  .pagina-composizioni .quaderno-illustrato {
+    padding: 1rem;
+  }
+
+  .pagina-composizioni .quaderno-illustrato .gesto-atelier {
+    padding: 1.1rem 1rem 1.25rem 1.2rem;
+  }
+}
+/* Cartoncino della Nota di bottega */
+.pagina-composizioni .nota-bottega {
+  position: relative;
+  margin-inline: auto max(1.25rem, calc((100% - 72rem) / 2));
+  padding-top: clamp(1.75rem, 4vw, 2.5rem);
+}
+
+.pagina-composizioni .nota-bottega::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: clamp(1rem, 5vw, 3rem);
+  width: 4.5rem;
+  height: 1.15rem;
+  background: repeating-linear-gradient(
+    125deg,
+    #e4c17b 0 5px,
+    #ebce94 5px 10px
+  );
+  clip-path: polygon(3% 0, 98% 0, 95% 25%, 100% 50%, 96% 75%, 98% 100%, 0 100%, 4% 70%, 0 45%);
+  transform: translateY(-50%) rotate(7deg);
+  pointer-events: none;
+}
+
+@media (max-width: 900px) {
+  .pagina-composizioni .nota-bottega {
+    margin-inline: auto;
+  }
+}
+/* Una sola sezione per l’osservazione e la prova */
+.pagina-composizioni .quaderno-illustrato {
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.quaderno-prova {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  width: min(calc(100% - 2.5rem), 72rem);
+  margin: 0 auto;
+  overflow: hidden;
+  border: 1px solid #a7b398;
+  border-radius: .25rem clamp(2rem, 5vw, 4rem) .25rem .25rem;
+}
+
+.quaderno-osservazione,
+.quaderno-esercizio {
+  padding: clamp(1.5rem, 4.5vw, 4rem);
+}
+
+.quaderno-osservazione {
+  background: linear-gradient(145deg, #f5f2e7, #d9e2d2);
+}
+
+.quaderno-prova .label {
+  margin: 0 0 .85rem;
+}
+
+.quaderno-osservazione h2 {
+  font-size: clamp(2.15rem, 4.6vw, 4rem);
+  line-height: 1.05;
+}
+
+.quaderno-osservazione p:last-child {
+  max-width: 39ch;
+  margin: 1.15rem 0 0;
+  padding-left: 1rem;
+  border-left: 2px solid #859477;
+}
+
+.quaderno-esercizio {
+  background: radial-gradient(ellipse at top right, #405544, #28392e 70%);
+  color: var(--avorio);
+}
+
+.quaderno-esercizio .label {
+  color: #c4d3b8;
+}
+
+.quaderno-esercizio h3 {
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  line-height: 1.1;
+}
+
+.quaderno-esercizio ol {
+  margin: 1.15rem 0 0;
+  padding-left: 1.65rem;
+}
+
+.quaderno-esercizio li {
+  padding: .65rem 0 .65rem .4rem;
+}
+
+.quaderno-esercizio li + li {
+  border-top: 1px solid rgb(196 211 184 / 35%);
+}
+
+.quaderno-esercizio li::marker {
+  color: #e4c17b;
+  font-family: var(--titoli);
+  font-style: italic;
+}
+
+@media (max-width: 760px) {
+  .quaderno-prova {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+/* Nastro di carta sulla Nota di bottega */
+.quaderno-osservazione {
+  position: relative;
+  padding-top: clamp(2.75rem, 5vw, 4rem);
+}
+
+.quaderno-osservazione::before {
+  content: "";
+  position: absolute;
+  top: .7rem;
+  right: clamp(1.25rem, 4vw, 2.75rem);
+  width: 4.75rem;
+  height: 1.15rem;
+  background: repeating-linear-gradient(
+    125deg,
+    #e4c17b 0 5px,
+    #ebce94 5px 10px
+  );
+  clip-path: polygon(
+    3% 0, 98% 0, 95% 25%, 100% 50%, 96% 75%,
+    98% 100%, 0 100%, 4% 70%, 0 45%
+  );
+  transform: rotate(7deg);
+  pointer-events: none;
+}
+
+.quaderno-osservazione .foto-ombra {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 1.25rem;
+  border-radius: .2rem 1.5rem .2rem .2rem;
+}
+/* Stampa fotografica nella Nota di bottega */
+.quaderno-osservazione::before {
+  content: none;
+}
+
+.quaderno-osservazione .stampa-ombra {
+  position: relative;
+  margin: 1.65rem .35rem .35rem 0;
+  padding: .55rem;
+  background: var(--avorio);
+  border: 1px solid #b8c1ad;
+  box-shadow: .35rem .35rem 0 rgb(82 96 68 / 18%);
+}
+
+.stampa-ombra::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: -.5rem;
+  right: 1rem;
+  width: 4.75rem;
+  height: 1.15rem;
+  background: repeating-linear-gradient(
+    125deg,
+    #e4c17b 0 5px,
+    #ebce94 5px 10px
+  );
+  clip-path: polygon(3% 0, 98% 0, 95% 30%, 100% 55%, 96% 100%, 0 100%, 4% 55%);
+  transform: rotate(7deg);
+  pointer-events: none;
+}
+
+.stampa-ombra-foto {
+  position: relative;
+  overflow: hidden;
+}
+
+.stampa-ombra-foto img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.stampa-ombra figcaption {
+  padding: .55rem .2rem .15rem;
+  color: #475640;
+  font: italic 1rem/1.4 var(--titoli);
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .stampa-ombra-foto::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      110deg,
+      transparent 32%,
+      rgb(255 242 206 / 30%) 50%,
+      transparent 68%
+    );
+    transform: translateX(-100%);
+    pointer-events: none;
+  }
+
+  .stampa-ombra:hover .stampa-ombra-foto::after {
+    animation: riflesso-stampa-ombra .85s ease-out;
+  }
+}
+
+@keyframes riflesso-stampa-ombra {
+  to { transform: translateX(100%); }
+}
+/* Chiusura del quaderno */
+.quaderno-uscita {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 1.25rem 2rem;
+  width: min(calc(100% - 2.5rem), 72rem);
+  margin: clamp(1.25rem, 3vw, 2rem) auto 0;
+  padding: clamp(1.25rem, 3vw, 2.25rem);
+  border-top: 1px solid var(--bordo);
+  background: linear-gradient(to right, var(--salvia-tenue), var(--avorio));
+}
+
+.quaderno-uscita h2 {
+  font-size: clamp(1.75rem, 3.5vw, 2.8rem);
+  line-height: 1.1;
+}
+
+.quaderno-uscita-link {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .65rem 1.25rem;
+}
+
+.quaderno-uscita-link a:not(.button) {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: #475640;
+  text-underline-offset: .25em;
+}
+
+@media (max-width: 760px) {
+  .quaderno-uscita {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .quaderno-uscita-link {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .quaderno-uscita-link a:not(.button) {
+    justify-content: center;
+  }
+}
+/* Passaggio dal quaderno alla prova pratica */
+.pagina-composizioni .quaderno-illustrato {
+  margin-bottom: 0;
+}
+
+
+.quaderno-separatore span {
+  background: linear-gradient(
+    0deg,
+    #a7b398 0 43%,
+    #b08138 43% 57%,
+    #c4ceb8 57% 100%
+  );
+}
+/* Materiali e nota di osservazione nell’esercizio */
+.quaderno-materiali {
+  margin-top: 1.25rem;
+}
+
+.quaderno-materiali p {
+  margin: 0 0 .5rem;
+  color: #d9e2d2;
+  font-weight: 600;
+}
+
+.quaderno-esercizio .quaderno-materiali ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .45rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.quaderno-esercizio .quaderno-materiali li {
+  padding: .25rem .7rem;
+  border: 1px solid #819280;
+  border-radius: 99px;
+  background: rgb(244 241 231 / 8%);
+}
+
+.quaderno-domanda {
+  margin: 1.35rem 0 0;
+  padding: .85rem 1rem;
+  border-left: 2px solid #e4c17b;
+  background: rgb(244 241 231 / 8%);
+}
+
+.quaderno-domanda strong {
+  display: block;
+  margin-bottom: .25rem;
+  color: #efd6a4;
+}
+/* Composizioni: impaginazione su tablet */
+@media (max-width: 900px) {
+  .pagina-composizioni .quaderno-illustrato,
+  .pagina-composizioni .quaderno-prova,
+  .pagina-composizioni .quaderno-uscita {
+    width: min(calc(100% - 2.5rem), 42rem);
+  }
+
+  .pagina-composizioni .quaderno-illustrato {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+    padding: clamp(1rem, 3vw, 1.75rem);
+  }
+
+  .pagina-composizioni .tavola-botanica {
+    width: min(calc(100% - .45rem), 23rem);
+    margin: 0 .45rem .45rem 0;
+    justify-self: center;
+  }
+
+  .pagina-composizioni .quaderno-prova {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .pagina-composizioni .quaderno-osservazione,
+  .pagina-composizioni .quaderno-esercizio {
+    padding: clamp(1.35rem, 4vw, 2.25rem);
+  }
+}
+
+/* Composizioni: spazi e titoli su telefono */
+@media (max-width: 540px) {
+  .pagina-composizioni .apertura-quaderno > img {
+    height: clamp(11rem, 58vw, 16rem);
+  }
+
+  .pagina-composizioni .apertura-quaderno-testo {
+    padding: 1.25rem 1rem 1.5rem;
+  }
+
+  .pagina-composizioni .apertura-quaderno h1 {
+    font-size: clamp(2rem, 8vw, 2.75rem);
+  }
+
+  .pagina-composizioni .quaderno-illustrato,
+  .pagina-composizioni .quaderno-prova,
+  .pagina-composizioni .quaderno-uscita {
+    width: calc(100% - 2rem);
+  }
+
+  .pagina-composizioni .quaderno-illustrato {
+    gap: 1.15rem;
+    padding: .85rem;
+  }
+
+  .pagina-composizioni .quaderno-illustrato .gesto-atelier {
+    padding: 1rem .85rem 1rem 1.1rem;
+  }
+
+  .pagina-composizioni .quaderno-osservazione,
+  .pagina-composizioni .quaderno-esercizio {
+    padding: 1.25rem;
+  }
+
+  .pagina-composizioni .stampa-ombra {
+    margin-top: 1.35rem;
+  }
+
+  .pagina-composizioni .quaderno-uscita,
+  .pagina-composizioni .quaderno-uscita-link {
+    grid-template-columns: minmax(0, 1fr);
+    text-align: center;
+  }
+
+  .pagina-composizioni .quaderno-uscita-link {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .pagina-composizioni .quaderno-uscita-link a:not(.button) {
+    justify-content: center;
+  }
+}
+/* Appunti sul tavolo dei laboratori */
+.pagina-laboratori .incontro-appunti {
+  margin: 0 var(--spazio-scheda, 1.25rem) 1.5rem;
+  border-top: 1px solid var(--bordo);
+}
+
+.pagina-laboratori .incontro-appunti > div {
+  display: grid;
+  grid-template-columns: minmax(0, 7.5rem) minmax(0, 1fr);
+  gap: .35rem 1rem;
+  padding-block: .75rem;
+  border-bottom: 1px solid var(--bordo);
+}
+
+.pagina-laboratori .incontro-appunti dt {
+  color: #475640;
+  font: italic 1.1rem/1.35 var(--titoli);
+}
+
+.pagina-laboratori .incontro-appunti dd {
+  margin: 0;
+  line-height: 1.55;
+}
+
+@media (max-width: 520px) {
+  .pagina-laboratori .incontro-appunti > div {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+/* Passaggio dall’introduzione alle schede dei laboratori */
+
+.pagina-laboratori .laboratori-separatore + .incontri-atelier {
+  margin-top: 0;
+}
+
+@keyframes laboratori-foto-entrata {
+  from { filter: brightness(.85) saturate(.7); }
+  to   { filter: brightness(1) saturate(1); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .pagina-laboratori .incontro-foto {
+      animation: laboratori-foto-entrata linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 65%;
+    }
+  }
+}
+/* Invito al modulo in fondo alla pagina Laboratori */
+.pagina-laboratori .laboratori-invito {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 1.15rem 2rem;
+  width: min(calc(100% - 2.5rem), 64rem);
+  margin: clamp(1.5rem, 4vw, 3rem) auto;
+  padding: clamp(1.25rem, 4vw, 2.75rem);
+  border-left: 3px solid #b08138;
+  border-radius: 0 1.75rem .2rem 0;
+  background: linear-gradient(to right, var(--salvia-tenue), var(--avorio));
+}
+
+.laboratori-invito h2 {
+  font-size: clamp(1.85rem, 4vw, 3.1rem);
+  line-height: 1.1;
+}
+
+.laboratori-invito p {
+  max-width: 46ch;
+  margin: .65rem 0 0;
+  color: #475640;
+}
+
+@media (max-width: 700px) {
+  .pagina-laboratori .laboratori-invito {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .laboratori-invito .button {
+    justify-self: start;
+  }
+}
+/* Ritmo comune alle sei pagine */
+:root {
+  --spazio-fregio: clamp(1.25rem, 3.5vw, 2.5rem);
+  --spazio-prima-footer: clamp(2rem, 5vw, 4rem);
+}
+
+/* Stessa misura e stessa distanza per i fregi tra le sezioni */
+main .chi-separatore {
+  width: min(60%, 20rem);
+  margin: var(--spazio-fregio) auto;
+}
+
+/* Dentro un’introduzione, il fregio rimane vicino al titolo */
+.pagina-composizioni .quaderno-introduzione .chi-separatore {
+  margin: 0 auto 1.15rem;
+}
+
+/* Il fregio dà già spazio al cartoncino sotto */
+.pagina-chi-siamo .chi-separatore + .chi-invito {
+  margin-top: 0;
+}
+
+/* Lascia aria sopra la curva del footer */
+footer {
+  margin-top: calc(var(--altezza-curva, 0px) + var(--spazio-prima-footer));
+}
+
+/* Tieni compatto il menu prima del passaggio all’hamburger */
+@media (min-width: 861px) and (max-width: 1050px) {
+  #menu-principale {
+    column-gap: clamp(.65rem, 1.5vw, 1.25rem);
+  }
+}
+
+@media (max-width: 600px) {
+  :root {
+    --spazio-fregio: 1.25rem;
+    --spazio-prima-footer: 1.75rem;
+  }
+
+  #menu-principale a {
+    padding-block: .4rem;
+  }
+}
+/* Due palette per le schede dei Laboratori */
+.pagina-laboratori .incontro-atelier {
+  --carta-incontro: #f4f1e7;
+  --bordo-incontro: #a7b398;
+  --fascia-incontro: #d9e2d2;
+
+  background: var(--carta-incontro);
+  border-color: var(--bordo-incontro);
+}
+
+.pagina-laboratori .incontro-atelier:nth-child(2) {
+  --carta-incontro: #f7efe1;
+  --bordo-incontro: #c7ae88;
+  --fascia-incontro: #eadcc3;
+
+  background: var(--carta-incontro);
+}
+
+.pagina-laboratori .incontro-foto {
+  border-bottom: 4px solid var(--bordo-incontro);
+}
+
+.pagina-laboratori .incontro-appunti,
+.pagina-laboratori .incontro-appunti > div {
+  border-color: var(--bordo-incontro);
+}
+
+.pagina-laboratori .incontro-esito {
+  border-top-color: var(--bordo-incontro);
+  background: var(--fascia-incontro);
+}
+/* Angoli di carta sulle foto dei Laboratori */
+.pagina-laboratori .incontro-stampa {
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--bordo-incontro, #a7b398);
+}
+
+.pagina-laboratori .incontro-stampa .incontro-foto {
+  border-bottom: 0;
+}
+
+.pagina-laboratori .incontro-stampa::before,
+.pagina-laboratori .incontro-stampa::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  width: clamp(1.4rem, 3vw, 2.4rem);
+  aspect-ratio: 1;
+  background: var(--fascia-incontro, #d9e2d2);
+  pointer-events: none;
+}
+
+.pagina-laboratori .incontro-stampa::before {
+  top: .65rem;
+  left: .65rem;
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+
+.pagina-laboratori .incontro-stampa::after {
+  right: .65rem;
+  bottom: .65rem;
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .pagina-laboratori .incontro-stampa .incontro-foto {
+    transition: transform .55s ease;
+  }
+
+  .pagina-laboratori .incontro-stampa:hover .incontro-foto {
+    transform: scale(1.045);
+  }
+}
+/* I tre momenti di un incontro */
+.pagina-laboratori .incontro-percorso {
+  width: min(calc(100% - 2.5rem), 64rem);
+  margin: clamp(2.5rem, 6vw, 5rem) auto;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  border: 1px solid var(--bordo);
+  background: linear-gradient(135deg, #faf6eb, #e9eee3);
+}
+
+.incontro-percorso h2 {
+  font-size: clamp(2rem, 4.5vw, 3.6rem);
+  line-height: 1.08;
+}
+
+.incontro-percorso ol {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem 2rem;
+  margin: 1.5rem 0 0;
+  padding: 1.25rem 0 0 1.5rem;
+  border-top: 1px solid #859477;
+}
+
+.incontro-percorso li {
+  padding-left: .25rem;
+}
+
+.incontro-percorso li::marker {
+  color: #80602d;
+  font-family: var(--titoli);
+  font-style: italic;
+  font-size: 1.2em;
+}
+
+.incontro-percorso h3 {
+  font-size: clamp(1.35rem, 2.5vw, 1.9rem);
+  line-height: 1.15;
+}
+
+.incontro-percorso p {
+  max-width: 40ch;
+  margin: .6rem 0 0;
+}
+
+@media (max-width: 760px) {
+  .incontro-percorso ol {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .incontro-percorso li + li {
+    padding-top: 1rem;
+    border-top: 1px solid var(--bordo);
+  }
+}
+/* Domande prima del laboratorio */
+.pagina-laboratori .laboratori-domande {
+  width: min(calc(100% - 2.5rem), 52rem);
+  margin: clamp(2rem, 5vw, 3.5rem) auto;
+  padding: clamp(1.25rem, 4vw, 2.5rem);
+  border-radius: .2rem 2rem .2rem .2rem;
+  background: var(--salvia-tenue);
+}
+
+.laboratori-domande h2 {
+  margin-bottom: 1.25rem;
+  font-size: clamp(1.9rem, 4vw, 3rem);
+}
+
+.laboratori-domande details {
+  padding: 0;
+  border-top: 1px solid var(--bordo);
+}
+
+.laboratori-domande summary {
+  min-height: 44px;
+  padding: .85rem .4rem;
+  color: #475640;
+  cursor: pointer;
+  font: italic clamp(1.1rem, 2.4vw, 1.4rem)/1.4 var(--titoli);
+}
+
+.laboratori-domande details[open] {
+  background: var(--avorio);
+}
+
+.laboratori-domande details p {
+  max-width: 56ch;
+  margin: 0;
+  padding: 0 .85rem 1rem;
+}
+/* Tre fogli per il percorso dei laboratori */
+.pagina-laboratori .incontro-percorso ol {
+  gap: 1rem 1.5rem;
+  padding-top: 1.5rem;
+}
+
+.pagina-laboratori .incontro-percorso li {
+  position: relative;
+  min-width: 0;
+  padding: 1rem 1.5rem 1rem 1rem;
+  border: 1px solid #b8c1ad;
+  background: var(--avorio);
+  box-shadow: 3px 3px 0 rgb(133 148 119 / 18%);
+}
+
+.pagina-laboratori .incontro-percorso li::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1.15rem;
+  aspect-ratio: 1;
+  background: #c4ceb8;
+  clip-path: polygon(0 0, 100% 100%, 0 100%);
+  transform-origin: top right;
+  pointer-events: none;
+}
+
+@keyframes laboratori-piega-foglio {
+  from { transform: scale(.3); }
+  to   { transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .pagina-laboratori .incontro-percorso li::after {
+      animation: laboratori-piega-foglio linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 80%;
+    }
+  }
+}
+/* I due lavori finiti sul tavolo */
+.pagina-laboratori .laboratori-tavola-finale {
+  width: min(calc(100% - 2.5rem), 64rem);
+  margin: clamp(2rem, 5vw, 3.5rem) auto;
+  overflow: hidden;
+  border: 1px solid #a7b398;
+  border-radius: .25rem clamp(2rem, 5vw, 4rem) .25rem .25rem;
+  background: var(--avorio);
+  box-shadow: .4rem .4rem 0 var(--salvia);
+}
+
+.laboratori-tavola-finale img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2 / 1;
+  object-fit: cover;
+  object-position: center 56%;
+}
+
+.laboratori-tavola-finale figcaption {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  background: linear-gradient(to right, #e9eee3, #f7efe1);
+}
+
+.laboratori-tavola-finale figcaption span {
+  padding: .9rem clamp(.9rem, 3vw, 1.75rem);
+}
+
+.laboratori-tavola-finale figcaption span + span {
+  border-left: 1px solid #a7b398;
+}
+
+.laboratori-tavola-finale figcaption strong {
+  display: block;
+  margin-bottom: .2rem;
+  color: #475640;
+  font: italic 1.3rem/1.25 var(--titoli);
+}
+
+@media (max-width: 600px) {
+  .laboratori-tavola-finale img {
+    aspect-ratio: auto;
+  }
+
+  .laboratori-tavola-finale figcaption {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .laboratori-tavola-finale figcaption span + span {
+    border-top: 1px solid #a7b398;
+    border-left: 0;
+  }
+}
+
+/* Rifinitura comune su schermi stretti */
+@media (max-width: 860px) {
+  header.top #menu-principale {
+    max-height: min(65vh, 28rem);
+    overflow-y: auto;
+    padding-inline: .25rem;
+  }
+
+  header.top #menu-principale a {
+    min-height: 44px;
+  }
+}
+
+@media (max-width: 600px) {
+  .pagina-laboratori .incontri-atelier,
+  .pagina-laboratori .incontro-percorso,
+  .pagina-laboratori .laboratori-tavola-finale,
+  .pagina-laboratori .laboratori-domande,
+  .pagina-laboratori .laboratori-invito {
+    width: calc(100% - 2rem);
+  }
+
+  .pagina-laboratori .incontro-percorso {
+    padding: 1.25rem;
+  }
+
+  .pagina-laboratori .incontro-percorso ol {
+    padding-left: 1.25rem;
+  }
+
+  .pagina-laboratori .laboratori-invito .button {
+    width: 100%;
+    justify-self: stretch;
+  }
+}
+
+/* Fregi e cornice fotografica di Laboratori */
+.pagina-laboratori .laboratori-fregio {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 4.5rem minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(.65rem, 3vw, 1.5rem);
+  width: min(calc(100% - 2.5rem), 42rem);
+  margin: clamp(1.5rem, 4vw, 2.75rem) auto;
+  color: #526044;
+}
+
+.laboratori-fregio::before,
+.laboratori-fregio::after {
+  content: "";
+  height: 1px;
+  background: linear-gradient(to right, transparent, #859477);
+}
+
+.laboratori-fregio::after {
+  background: linear-gradient(to left, transparent, #859477);
+}
+
+.laboratori-fregio span {
+  position: relative;
+  height: 1.85rem;
+}
+
+.laboratori-fregio span::before {
+  content: "";
+  position: absolute;
+  inset: 55% .25rem auto;
+  height: .45rem;
+  border-top: 1px solid currentColor;
+  border-radius: 50%;
+  transform: rotate(-12deg);
+}
+
+.laboratori-fregio i {
+  position: absolute;
+  width: 1.2rem;
+  height: .55rem;
+  border: 1px solid currentColor;
+  border-radius: 80% 20% 80% 20%;
+  background: #a7b398;
+}
+
+.laboratori-fregio i:nth-child(1) {
+  top: .55rem;
+  left: .7rem;
+  transform: rotate(36deg);
+}
+
+.laboratori-fregio i:nth-child(2) {
+  top: .95rem;
+  left: 1.95rem;
+  transform: rotate(20deg);
+}
+
+.laboratori-fregio i:nth-child(3) {
+  top: .35rem;
+  right: .55rem;
+  background: #e4c17b;
+  transform: rotate(-25deg);
+}
+
+.pagina-laboratori .laboratori-fregio + :is(.incontro-percorso, .laboratori-domande) {
+  margin-top: 0;
+}
+
+.pagina-laboratori .incontro-percorso {
+  border-top: 3px solid #859477;
+  border-radius: .25rem 2.25rem .25rem .25rem;
+}
+
+.pagina-laboratori .laboratori-tavola-finale {
+  padding: clamp(.55rem, 1.4vw, 1rem);
+  border-color: #b8a17c;
+  background: #faf4e8;
+  box-shadow: .45rem .45rem 0 #d9e2d2;
+}
+
+.laboratori-tavola-finale figcaption {
+  margin-top: .6rem;
+  border-top: 1px solid #b8a17c;
+}
+
+.pagina-laboratori .laboratori-domande details[open] {
+  box-shadow: inset 3px 0 #859477;
+}
+
+@media (max-width: 600px) {
+  .pagina-laboratori .laboratori-fregio {
+    width: min(calc(100% - 2rem), 22rem);
+    margin-block: 1.5rem;
+  }
+}

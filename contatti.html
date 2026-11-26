@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta name="robots" content="noindex, noimageindex">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+ <title>Contatti — Foglie a mezzavoce</title>
+<meta name="description" content="Modulo di contatto dimostrativo di Foglie a mezzavoce, atelier botanico immaginario.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="top" id="inizio">
+  <a class="brand" href="index.html">
+  <img src="img/logo.png" alt="Foglie a mezzavoce — Atelier botanico" width="150">
+</a>
+   
+
+  <button
+  class="menu-toggle"
+  type="button"
+  aria-label="Menu di navigazione"
+  aria-controls="menu-principale"
+  aria-expanded="false"
+  hidden
+>
+  <span class="menu-icon" aria-hidden="true">
+    <span></span>
+    <span></span>
+    <span></span>
+  </span>
+</button>
+
+<nav id="menu-principale" aria-label="Navigazione principale">
+      <a href="index.html">Home</a>
+      <a href="chi-siamo.html">Chi siamo</a>
+	  <a href="servizi.html">Servizi</a>
+      <a href="composizioni.html">Composizioni</a>
+      <a href="laboratori.html">Laboratori</a>
+	  <a href="contatti.html">Contatti</a>
+    </nav>
+  </header>
+<main class="pagina-contatti">
+  <section class="contatti-quaderno" aria-labelledby="titolo-contatti">
+    <div class="contatti-intro">
+      <p class="label">Contatti · Sito dimostrativo</p>
+      <h1 id="titolo-contatti">Scrivici</h1>
+      <p>
+        Una foto, un luogo o il ricordo di una pianta possono essere
+        il punto di partenza per raccontarci la tua idea.
+      </p>
+    </div>
+
+    <form class="contatti-modulo" id="modulo-contatti"
+      aria-describedby="nota-contatti">
+      <p id="nota-contatti">
+        Questo modulo è una simulazione. Usa dati di esempio.
+        I campi non vengono inviati né salvati dal sito.
+      </p>
+<p class="contatti-obbligatori">Tutti i campi sono obbligatori.</p>
+      <div class="contatti-campi">
+        <label>
+          Nome
+          <input type="text" required>
+        </label>
+
+        <label>
+          Email
+          <input type="email" required>
+        </label>
+      </div>
+
+      <label>
+        Di cosa vuoi parlarci?
+      <select id="argomento-contatti" required>
+  <option value="">Scegli un argomento</option>
+  <option value="servizi">Informazioni sui servizi</option>
+  <option value="composizioni">Composizioni su misura</option>
+  <option value="allestimenti">Piccoli allestimenti</option>
+  <option value="styling">Styling per set</option>
+  <option value="laboratori">Laboratori</option>
+  <option value="altro">Altro</option>
+</select>
+      </label>
+
+      <label>
+        Il tuo messaggio
+        <textarea rows="5" required></textarea>
+      </label>
+
+      <div class="contatti-azioni">
+  <button class="button" type="submit" disabled>Simula l’invio</button>
+  <button class="contatti-svuota" type="reset">Svuota i campi</button>
+</div>
+      <p id="esito-contatti" role="status"></p>
+    </form>
+  </section>
+  <div class="chi-separatore" aria-hidden="true">
+  <span></span>
+</div>
+
+<nav class="contatti-rimandi" aria-label="Esplora l’atelier">
+  <a href="servizi.html">Esplora i servizi</a>
+  <a href="laboratori.html">Scopri i laboratori</a>
+</nav>
+</main>
+
+<footer>
+    <a class="brand" href="index.html">Foglie a mezzavoce</a>
+    <p>Progetto dimostrativo · Atelier immaginario</p>
+    <div class="fregio-footer" aria-hidden="true">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <a class="torna-in-alto" href="#inizio">Torna in alto</a>
+  </footer>
+<script>
+  const pulsanteMenu = document.querySelector(".menu-toggle");
+  const menu = document.querySelector("#menu-principale");
+  const schermoPiccolo = window.matchMedia("(max-width: 860px)");
+
+  function impostaMenu(aperto) {
+    pulsanteMenu.setAttribute("aria-expanded", String(aperto));
+    menu.hidden = schermoPiccolo.matches && !aperto;
+  }
+
+  function aggiornaMenu() {
+    pulsanteMenu.hidden = !schermoPiccolo.matches;
+    impostaMenu(false);
+  }
+
+  pulsanteMenu.addEventListener("click", () => {
+    impostaMenu(menu.hidden);
+  });
+
+  menu.addEventListener("click", (evento) => {
+    if (schermoPiccolo.matches && evento.target.closest("a")) {
+      impostaMenu(false);
+    }
+  });
+
+  document.addEventListener("keydown", (evento) => {
+    if (evento.key === "Escape" &&
+        pulsanteMenu.getAttribute("aria-expanded") === "true") {
+      impostaMenu(false);
+      pulsanteMenu.focus();
+    }
+  });
+
+  schermoPiccolo.addEventListener("change", aggiornaMenu);
+  aggiornaMenu();
+</script>
+<script>
+  (() => {
+    const modulo = document.getElementById("modulo-contatti");
+    const esito = document.getElementById("esito-contatti");
+	const argomento = new URLSearchParams(window.location.search).get("argomento");
+
+if (argomento === "servizi" || argomento === "laboratori") {
+  document.getElementById("argomento-contatti").value = argomento;
+}
+
+    modulo.addEventListener("submit", (evento) => {
+      evento.preventDefault();
+      esito.textContent = "Simulazione completata. Nessun messaggio è stato inviato.";
+    });
+
+    modulo.addEventListener("input", () => {
+      esito.textContent = "";
+    });
+modulo.addEventListener("reset", () => {
+  esito.textContent = "";
+});
+    modulo.querySelector('button[type="submit"]').disabled = false;
+  })();
+</script>
+</body>
+</html>
