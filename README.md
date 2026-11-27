@@ -1,4 +1,4 @@
-# Botanica — Foglie a mezzavoce
+# Atelier botanico — Foglie a mezzavoce
 
 *Rami, fiori e silenzi. Composizioni che seguono le stagioni.*
 
